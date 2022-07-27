@@ -1,0 +1,33 @@
+{
+	"name": "mahedi/simple-event-list",
+	"description": "A Very simple event listing plugin for WordPress.",
+	"type": "wordpress-plugin",
+	"keywords": [
+		"Event Listing"
+	],
+	"license": "GPL-2.0+",
+	"authors": [ {
+		"name": "Md. Mahedi Hasan",
+		"homepage": "https://www.linkedin.com/in/mahedihasannoman/"
+	} ],
+	"require": {
+		"composer/installers": "~1.0",
+		"php": ">=5.3.0"
+	},
+	"require-dev": {
+	  "squizlabs/php_codesniffer": "^3.4.0",
+	  "wp-coding-standards/wpcs": "*"
+	},
+    "autoload": {
+        "classmap": [
+            "includes"
+        ]
+    },
+    "scripts": {
+		"test": "vendor/bin/phpunit",
+		"lint-php": "vendor/bin/phpcs -s",
+		"lint-php-fix": "vendor/bin/phpcbf",
+		"lint-css": "grunt stylelint",
+		"lint": ["@lint-php", "@lint-css"]
+	}
+}
