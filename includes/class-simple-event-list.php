@@ -118,7 +118,7 @@ final class Simple_Event_List {
 
 		// CLI Request.
 		if ( $this->is_request( 'cli' ) ) {
-			\WP_CLI::add_command( 'import_events', new CLI_Import_Events() );
+			\WP_CLI::add_command( 'simple-events', new CLI_Import_Events() );
 		}
 
 		new Register_Event();
@@ -190,6 +190,8 @@ final class Simple_Event_List {
 				return defined( 'DOING_AJAX' );
 			case 'cron':
 				return defined( 'DOING_CRON' );
+			case 'cli':
+				return defined( 'WP_CLI' );
 			case 'frontend':
 				return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ) && ! $this->is_rest_api_request();
 		}

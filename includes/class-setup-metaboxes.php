@@ -11,7 +11,7 @@ namespace SimpleEventList;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * SE_Setup_Metaboxes Class.
+ * Setup_Metaboxes Class.
  *
  * @class SimpleEventList
  *
@@ -47,8 +47,11 @@ class Setup_Metaboxes {
 	 *
 	 * @param string $post_type custom post type for simple event.
 	 */
-	public function __construct( $post_type = 'simple-events' ) {
-		$this->post_type = $post_type;
+	public function __construct( $post_type = '' ) {
+
+		if ( '' === $post_type ) {
+			$this->post_type = sel_post_type();
+		}
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_post' ), 100 );
 	}

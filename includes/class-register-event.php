@@ -11,7 +11,7 @@ namespace SimpleEventList;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * SE_Register_Event Class.
+ * Register_Event Class.
  *
  * @class SimpleEventList
  *
@@ -76,12 +76,45 @@ class Register_Event {
 			'has_archive'        => false,
 			'hierarchical'       => false,
 			'menu_position'      => 20,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
-			'taxonomies'         => array( 'post_tag' ),
+			'supports'           => array( 'title', 'editor', 'author' ),
 			'show_in_rest'       => true,
 			'publicly_queryable' => false,
 		);
 
-		register_post_type( 'simple-events', $args );
+		register_post_type( sel_post_type(), $args );
+
+		// Regisgter taxonomy, NOT hierarchical (like tags).
+		$labels = array(
+			'name'                       => _x( 'Event Tags', 'taxonomy general name', 'simple-event-list' ),
+			'singular_name'              => _x( 'Tag', 'taxonomy singular name', 'simple-event-list' ),
+			'search_items'               => __( 'Search Tags', 'simple-event-list' ),
+			'popular_items'              => __( 'Popular Tags', 'simple-event-list' ),
+			'all_items'                  => __( 'All Tags', 'simple-event-list' ),
+			'parent_item'                => null,
+			'parent_item_colon'          => null,
+			'edit_item'                  => __( 'Edit Tag', 'simple-event-list' ),
+			'update_item'                => __( 'Update Tag', 'simple-event-list' ),
+			'add_new_item'               => __( 'Add New Tag', 'simple-event-list' ),
+			'new_item_name'              => __( 'New Tag Name', 'simple-event-list' ),
+			'separate_items_with_commas' => __( 'Separate tags with commas', 'simple-event-list' ),
+			'add_or_remove_items'        => __( 'Add or remove tags', 'simple-event-list' ),
+			'choose_from_most_used'      => __( 'Choose from the most used tags', 'simple-event-list' ),
+			'not_found'                  => __( 'No tags found.', 'simple-event-list' ),
+			'menu_name'                  => __( 'Tags', 'simple-event-list' ),
+		);
+
+		$args = array(
+			'hierarchical'          => false,
+			'labels'                => $labels,
+			'show_ui'               => true,
+			'show_admin_column'     => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var'             => true,
+			'publicly_queryable'    => false,
+			'show_in_rest'          => true,
+
+		);
+
+		register_taxonomy( sel_taxonomy(), sel_post_type(), $args );
 	}
 }
