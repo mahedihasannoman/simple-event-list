@@ -113,10 +113,15 @@ final class Simple_Event_List {
 		require_once SIMPLE_EVENT_LIST_ABSPATH . '/includes/functions.php';
 
 		if ( $this->is_request( 'admin' ) ) {
-			new SE_Setup_Metaboxes();
+			new Setup_Metaboxes();
 		}
 
-		new SE_Register_Event();
+		// CLI Request.
+		if ( $this->is_request( 'cli' ) ) {
+			\WP_CLI::add_command( 'import_events', new CLI_Import_Events() );
+		}
+
+		new Register_Event();
 
 	}
 

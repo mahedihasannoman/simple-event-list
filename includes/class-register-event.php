@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-class SE_Register_Event {
+class Register_Event {
 
 	/**
 	 * SE_Register_Event Constructor.

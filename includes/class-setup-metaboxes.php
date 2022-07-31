@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-class SE_Setup_Metaboxes {
+class Setup_Metaboxes {
 
 	/**
 	 * Post type
