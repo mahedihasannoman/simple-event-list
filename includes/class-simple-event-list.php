@@ -111,9 +111,11 @@ final class Simple_Event_List {
 	 */
 	public function includes() {
 		require_once SIMPLE_EVENT_LIST_ABSPATH . '/includes/functions.php';
+
 		if ( $this->is_request( 'admin' ) ) {
 			new SE_Setup_Metaboxes();
 		}
+
 		new SE_Register_Event();
 
 	}
