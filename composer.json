@@ -24,7 +24,6 @@
         ]
     },
     "scripts": {
-		"test": "vendor/bin/phpunit",
 		"lint-php": "vendor/bin/phpcs -s",
 		"lint-php-fix": "vendor/bin/phpcbf",
 		"lint-css": "grunt stylelint",
