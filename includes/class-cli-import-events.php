@@ -34,30 +34,49 @@ class CLI_Import_Events {
 			if ( function_exists( 'file_get_contents' ) ) {
 
 				$events = file_get_contents( $source );
-				$events = json_decode( $events );
+				$events = json_decode( $events, true );
 
 				$inserted = 0;
 				$updated  = 0;
 				$failed   = 0;
 				foreach ( $events as $event ) {
 
-					$result = sel_insert_event( $event );
-					if ( $result ) {
-						$inserted++;
-						\WP_CLI::log( 'Event ID: ' . esc_html( $event['id'] ) . ' Inserted!' );
+					// Check if event is already exists.
+					$post_id = sel_get_post_id( $event['id'] );
+					if ( ! is_null( $post_id ) ) {
+						// Update the event.
+						$result = sel_update_event( $post_id, $event );
+						if ( $result ) {
+							$updated++;
+							// translators: %d: Event ID.
+							\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d updated!', 'simple-event-list' ), (int) $event['id'] ) );
+						} else {
+							$failed++;
+							// translators: %d: Event ID.
+							\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d update failed.', 'simple-event-list' ), (int) $event['id'] ) );
+						}
 					} else {
-						$failed++;
-						\WP_CLI::log( 'Event ID: ' . esc_html( $event['id'] ) . ' Failed.' );
+						// Insert event.
+						$result = sel_insert_event( $event );
+						if ( $result ) {
+							$inserted++;
+							// translators: %d: Event ID.
+							\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d inserted!', 'simple-event-list' ), (int) $event['id'] ) );
+						} else {
+							$failed++;
+							// translators: %d: Event ID.
+							\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d insert failed.', 'simple-event-list' ), (int) $event['id'] ) );
+						}
 					}
 				}
-
-				\WP_CLI::success( esc_html__( 'All events are imported correctly!', 'simple-event-list' ) );
+				// translators: %d: event inserted or updated or failed.
+				\WP_CLI::success( sprintf( esc_html__( '%1$d event(s) are inserted, %2$d event(s) are updated, and %3$d event(s) failed to insert or update!', 'simple-event-list' ), $inserted, $updated, $failed ) );
 
 			} else {
-				\WP_CLI::error( esc_html__( 'Source not found.', 'simple-event-list' ), $exit = true );
+				\WP_CLI::error( esc_html__( 'file_get_contents function does not exists. Unable to import events.', 'simple-event-list' ), $exit = true );
 			}
 		} else {
-			\WP_CLI::error( esc_html__( 'Source not found.', 'simple-event-list' ), $exit = true );
+			\WP_CLI::error( esc_html__( 'Source not found. Unable to import events', 'simple-event-list' ), $exit = true );
 		}
 
 	}
