@@ -59,7 +59,7 @@ class SE_Setup_Metaboxes {
 				'name'     => __( 'Organizer', 'simple-event-list' ),
 				'callback' => array( $this, 'render_organizer_field' ),
 			),
-			'email' => array(
+			'email'     => array(
 				'name'     => __( 'Email', 'simple-event-list' ),
 				'callback' => array( $this, 'render_email_field' ),
 			),
@@ -67,11 +67,11 @@ class SE_Setup_Metaboxes {
 				'name'     => __( 'Time', 'simple-event-list' ),
 				'callback' => array( $this, 'render_time_field' ),
 			),
-			'address' => array(
+			'address'   => array(
 				'name'     => __( 'Address', 'simple-event-list' ),
 				'callback' => array( $this, 'render_address_field' ),
 			),
-			'latitude' => array(
+			'latitude'  => array(
 				'name'     => __( 'Latitude', 'simple-event-list' ),
 				'callback' => array( $this, 'render_latitude_field' ),
 			),
