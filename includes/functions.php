@@ -344,12 +344,12 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 	// less than 29secs.
 	if ( $time_difference <= 29 ) {
 
-		$time_remaining = 'less than a minute';
+		$time_remaining = __( 'less than a minute', 'simple-event-list' );
 
 	} elseif ( $time_difference > 29 && $time_difference <= 89 ) {
 
 		// more than 29secs and less than 1min29secss.
-		$time_remaining = '1 minute';
+		$time_remaining = __( '1 minute', 'simple-event-list' );
 
 	} elseif (
 		$time_difference > 89 &&
@@ -358,8 +358,9 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		)
 	) {
 		// between 1min30secs and 44mins29secs.
-		$minutes        = floor( $time_difference / $seconds_per_minute );
-		$time_remaining = $minutes . ' minutes';
+		$minutes = floor( $time_difference / $seconds_per_minute );
+		// translators: %d: Minutes.
+		$time_remaining = sprintf( __( '%d minutes', 'simple-event-list' ), $minutes );
 	} elseif (
 		$time_difference > (
 			( $seconds_per_minute * 44 ) + 29
@@ -370,7 +371,7 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		)
 	) {
 		// between 44mins30secs and 1hour29mins29secs.
-		$time_remaining = '1 hour';
+		$time_remaining = __( '1 hour', 'simple-event-list' );
 	} elseif (
 		$time_difference > (
 			( $seconds_per_minute * 89 ) + 29
@@ -382,8 +383,9 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		)
 	) {
 		// between 1hour29mins30secs and 23hours59mins29secs.
-		$hours          = floor( $time_difference / $seconds_per_hour );
-		$time_remaining = $hours . ' hours';
+		$hours = floor( $time_difference / $seconds_per_hour );
+		// translators: %d: Hours.
+		$time_remaining = sprintf( __( '%d hours', 'simple-event-list' ), $hours );
 	} elseif (
 		$time_difference > (
 			( $seconds_per_hour * 23 ) +
@@ -396,7 +398,7 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		)
 	) {
 		// between 23hours59mins30secs and 47hours59mins29secs.
-		$time_remaining = '1 day';
+		$time_remaining = __( '1 day', 'simple-event-list' );
 	} elseif (
 		$time_difference > (
 			( $seconds_per_hour * 47 ) +
@@ -410,8 +412,9 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		)
 	) {
 		// between 47hours59mins30secs and 29days23hours59mins29secs.
-		$days           = floor( $time_difference / $seconds_per_day );
-		$time_remaining = $days . ' days';
+		$days = floor( $time_difference / $seconds_per_day );
+		// translators: %d: Days.
+		$time_remaining = sprintf( __( '%d days', 'simple-event-list' ), $days );
 	} elseif (
 		$time_difference > (
 			( $seconds_per_day * 29 ) +
@@ -426,7 +429,7 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		)
 	) {
 		// between 29days23hours59mins30secs and 59days23hours59mins29secs.
-		$time_remaining = '1 month';
+		$time_remaining = __( '1 month', 'simple-event-list' );
 	} elseif (
 		$time_difference > (
 			( $seconds_per_day * 59 ) +
@@ -437,18 +440,20 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		$time_difference < $seconds_per_year
 	) {
 		// between 59days23hours59mins30secs and 1year (minus 1sec).
-		$months         = round( $time_difference / $seconds_per_month );
-		$time_remaining = $months . ' months';
+		$months = round( $time_difference / $seconds_per_month );
+		// translators: %d: Months.
+		$time_remaining = sprintf( __( '%d months', 'simple-event-list' ), $months );
 	} elseif (
 		$time_difference >= $seconds_per_year &&
 		$time_difference < ( $seconds_per_year * 2 )
 	) {
 		// between 1year and 2years (minus 1sec).
-		$time_remaining = '1 year';
+		$time_remaining = __( '1 year', 'simple-event-list' );
 	} else {
 		// 2years or more.
-		$years          = floor( $time_difference / $seconds_per_year );
-		$time_remaining = $years . ' years';
+		$years = floor( $time_difference / $seconds_per_year );
+		// translators: %d: Years.
+		$time_remaining = sprintf( __( '%d years', 'simple-event-list' ), $years );
 	}
 
 	return $time_remaining;
