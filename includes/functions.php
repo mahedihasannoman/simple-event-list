@@ -228,3 +228,34 @@ function sel_recursive_sanitize_text_field( $array ) {
 	}
 	return $array;
 }
+
+/**
+ * Send email notification for import
+ *
+ * @param int $inserted Total inserted events.
+ * @param int $updated  Total updated events.
+ * @param int $failed   Total failed events.
+ * @param int $total    Total events.
+ *
+ * @since 1.0.0
+ * @return void
+ */
+function sel_send_import_notification( $inserted, $updated, $failed, $total ) {
+
+	$to = 'logging@agentur-loop.com';
+
+	/* translators: Password change notification email subject. %s: Site title. */
+	$subject = sprintf( esc_html__( '[%s]: Event import has been finished!', 'simple-event-list' ), get_bloginfo( 'name' ) );
+	$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+
+	$message = sprintf(
+		'<div><p>%s</p><p>%s</p><p>%s</p><p>%s</p><p>%s</p></div>',
+		esc_html__( 'Event import has been finished successfully. Please see the detail report below.', 'simple-event-list' ),
+		esc_html__( 'Total Event(s): ', 'simple-event-list' ) . (int) $total,
+		esc_html__( 'Inserted Event(s): ', 'simple-event-list' ) . (int) $inserted,
+		esc_html__( 'Updated Event(s): ', 'simple-event-list' ) . (int) $updated,
+		esc_html__( 'Failed Event(s): ', 'simple-event-list' ) . (int) $failed,
+	);
+
+	wp_mail( $to, $subject, $message, $headers );
+}
