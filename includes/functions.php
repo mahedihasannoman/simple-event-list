@@ -353,47 +353,87 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 
 	} elseif (
 		$time_difference > 89 &&
-		$time_difference <= ( ( $seconds_per_minute * 44 ) + 29 )
+		$time_difference <= (
+			( $seconds_per_minute * 44 ) + 29
+		)
 	) {
 		// between 1min30secs and 44mins29secs.
 		$minutes        = floor( $time_difference / $seconds_per_minute );
 		$time_remaining = $minutes . ' minutes';
 	} elseif (
-		$time_difference > ( ( $seconds_per_minute * 44 ) + 29 )
+		$time_difference > (
+			( $seconds_per_minute * 44 ) + 29
+		)
 		&&
-		$time_difference < ( ( $seconds_per_minute * 89 ) + 29 )
+		$time_difference < (
+			( $seconds_per_minute * 89 ) + 29
+		)
 	) {
 		// between 44mins30secs and 1hour29mins29secs.
 		$time_remaining = '1 hour';
 	} elseif (
-		$time_difference > ( ( $seconds_per_minute * 89 ) + 29 ) &&
-		$time_difference <= ( ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29
+		$time_difference > (
+			( $seconds_per_minute * 89 ) + 29
+		)
+		&&
+		$time_difference <= (
+			( $seconds_per_hour * 23 ) +
+			( $seconds_per_minute * 59 ) + 29
 		)
 	) {
 		// between 1hour29mins30secs and 23hours59mins29secs.
 		$hours          = floor( $time_difference / $seconds_per_hour );
 		$time_remaining = $hours . ' hours';
 	} elseif (
-		$time_difference > ( ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
-		$time_difference <= ( ( $seconds_per_hour * 47 ) + ( $seconds_per_minute * 59 ) + 29 )
+		$time_difference > (
+			( $seconds_per_hour * 23 ) +
+			( $seconds_per_minute * 59 ) + 29
+		)
+		&&
+		$time_difference <= (
+			( $seconds_per_hour * 47 ) +
+			( $seconds_per_minute * 59 ) + 29
+		)
 	) {
 		// between 23hours59mins30secs and 47hours59mins29secs.
 		$time_remaining = '1 day';
 	} elseif (
-		$time_difference > ( ( $seconds_per_hour * 47 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
-		$time_difference <= ( ( $seconds_per_day * 29 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 )
+		$time_difference > (
+			( $seconds_per_hour * 47 ) +
+			( $seconds_per_minute * 59 ) + 29
+		)
+		&&
+		$time_difference <= (
+			( $seconds_per_day * 29 ) +
+			( $seconds_per_hour * 23 ) +
+			( $seconds_per_minute * 59 ) + 29
+		)
 	) {
 		// between 47hours59mins30secs and 29days23hours59mins29secs.
 		$days           = floor( $time_difference / $seconds_per_day );
 		$time_remaining = $days . ' days';
 	} elseif (
-		$time_difference > ( ( $seconds_per_day * 29 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
-		$time_difference <= ( ( $seconds_per_day * 59 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 )
+		$time_difference > (
+			( $seconds_per_day * 29 ) +
+			( $seconds_per_hour * 23 ) +
+			( $seconds_per_minute * 59 ) + 29
+		)
+		&&
+		$time_difference <= (
+			( $seconds_per_day * 59 ) +
+			( $seconds_per_hour * 23 ) +
+			( $seconds_per_minute * 59 ) + 29
+		)
 	) {
 		// between 29days23hours59mins30secs and 59days23hours59mins29secs.
 		$time_remaining = '1 month';
 	} elseif (
-		$time_difference > ( ( $seconds_per_day * 59 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
+		$time_difference > (
+			( $seconds_per_day * 59 ) +
+			( $seconds_per_hour * 23 ) +
+			( $seconds_per_minute * 59 ) + 29
+		)
+		&&
 		$time_difference < $seconds_per_year
 	) {
 		// between 59days23hours59mins30secs and 1year (minus 1sec).
