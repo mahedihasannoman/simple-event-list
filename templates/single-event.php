@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit; ?>
 			<p><b><?php echo esc_html__( 'Address', 'simple-event-list' ); ?></b>: <?php echo esc_html( $event['address'] ); ?></p>
 			<p><b><?php echo esc_html__( 'Latitude', 'simple-event-list' ); ?></b>: <?php echo esc_html( $event['latitude'] ); ?></p>
 			<p ><b><?php echo esc_html__( 'Longitude', 'simple-event-list' ); ?></b>: <?php echo esc_html( $event['longitude'] ); ?></p>
-			<p><b><?php echo esc_html__( 'Time Remaining', 'simple-event-list' ); ?></b>: <?php echo esc_html( sel_relative_time_from_timestamp( $event['timestamp'] ) ); ?></p>
+			<p><b><?php echo esc_html__( 'Time', 'simple-event-list' ); ?></b>: <?php echo esc_html( sel_relative_time_from_timestamp( $event['timestamp'] ) ); ?></p>
 		</div>
 
 		<div class="sel_event_tags">

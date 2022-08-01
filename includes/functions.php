@@ -329,17 +329,18 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 	$time               = strtotime( $timestamp );
 	$current_time       = time();
 
-	// creates the "remaining time" string. This always starts with an "In...".
+	// creates the "remaining time" string.
 	$time_remaining = '';
 
 	// finds the time difference.
 	$time_difference = $current_time - $time;
 
-	// Bail if the event is past.
-	if ( $time_difference > 0 ) {
-		return '';
+	$is_future = false;
+	// Check if the timestamp is future timestamp.
+	if ( $time_difference < 0 ) {
+		$is_future       = true;
+		$time_difference = abs( $time_difference );
 	}
-	$time_difference = abs( $time_difference );
 
 	// less than 29secs.
 	if ( $time_difference <= 29 ) {
@@ -456,6 +457,12 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		$time_remaining = sprintf( __( '%d years', 'simple-event-list' ), $years );
 	}
 
-	return $time_remaining;
+	if ( $is_future ) {
+		// translators: %s: Relative time such as "in 20 minutes" or "in 5 days".
+		return sprintf( __( 'in %s', 'simple-event-list' ), $time_remaining );
+	} else {
+		// translators: %s: Relative time such as "in 20 minutes" or "in 5 days".
+		return sprintf( __( '%s ago', 'simple-event-list' ), $time_remaining );
+	}
 
 }
