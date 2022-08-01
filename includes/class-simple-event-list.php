@@ -121,6 +121,11 @@ final class Simple_Event_List {
 			\WP_CLI::add_command( 'simple-events', new CLI_Import_Events() );
 		}
 
+		// Shortcode.
+		if ( $this->is_request( 'frontend' ) ) {
+			new Shortcode();
+		}
+
 		new Register_Event();
 
 	}

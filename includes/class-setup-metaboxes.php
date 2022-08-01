@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Setup_Metaboxes Class.
  *
- * @class SimpleEventList
+ * @class Setup_Metaboxes
  *
  * @since 1.0.0
  */

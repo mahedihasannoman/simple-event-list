@@ -245,12 +245,12 @@ function sel_send_import_notification( $inserted, $updated, $failed, $total ) {
 	$to = 'logging@agentur-loop.com';
 
 	/* translators: Password change notification email subject. %s: Site title. */
-	$subject = sprintf( esc_html__( '[%s]: Event import has been finished!', 'simple-event-list' ), get_bloginfo( 'name' ) );
+	$subject = sprintf( esc_html__( '[%s]: Events import has been finished!', 'simple-event-list' ), get_bloginfo( 'name' ) );
 	$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 
 	$message = sprintf(
 		'<div><p>%s</p><p>%s</p><p>%s</p><p>%s</p><p>%s</p></div>',
-		esc_html__( 'Event import has been finished successfully. Please see the detail report below.', 'simple-event-list' ),
+		esc_html__( 'Events import has been finished successfully. Please see the detail report below.', 'simple-event-list' ),
 		esc_html__( 'Total Event(s): ', 'simple-event-list' ) . (int) $total,
 		esc_html__( 'Inserted Event(s): ', 'simple-event-list' ) . (int) $inserted,
 		esc_html__( 'Updated Event(s): ', 'simple-event-list' ) . (int) $updated,
@@ -258,4 +258,159 @@ function sel_send_import_notification( $inserted, $updated, $failed, $total ) {
 	);
 
 	wp_mail( $to, $subject, $message, $headers );
+}
+
+/**
+ * Get all events data. This function has Memoization.
+ *
+ * @since 1.0.0
+ *
+ * @return Array $events Events array.
+ */
+function sel_get_events() {
+
+	static $events = null;
+
+	if ( is_null( $events ) ) {
+		$args  = array(
+			'post_type'      => sel_post_type(),
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'meta_key'       => '_simple_event_time',
+			'orderby'        => 'meta_value',
+			'order'          => 'ASC',
+		);
+		$query = new WP_Query( $args );
+
+		$events = array();
+
+		if ( ! empty( $query->posts ) ) {
+			foreach ( $query->posts as $post ) {
+				$events[] = array(
+					'id'        => get_post_meta( $post->ID, '_simple_event_id', true ),
+					'title'     => $post->post_title,
+					'about'     => $post->post_content,
+					'organizer' => get_post_meta( $post->ID, '_simple_event_organizer', true ),
+					'timestamp' => get_post_meta( $post->ID, '_simple_event_time', true ),
+					'email'     => get_post_meta( $post->ID, '_simple_event_email', true ),
+					'address'   => get_post_meta( $post->ID, '_simple_event_address', true ),
+					'latitude'  => get_post_meta( $post->ID, '_simple_event_latitude', true ),
+					'longitude' => get_post_meta( $post->ID, '_simple_event_longitude', true ),
+					'tags'      => wp_get_object_terms( $post->ID, sel_taxonomy(), array( 'fields' => 'slugs' ) ),
+				);
+			}
+		}
+	}
+
+	return $events;
+
+}
+
+/**
+ * Convert timestamp to relative time.
+ *
+ * @param string $timestamp Timestamp.
+ *
+ * @since 1.0.0
+ *
+ * @return string
+ */
+function sel_relative_time_from_timestamp( $timestamp ) {
+	// Bail if no timestamp.
+	if ( '' === $timestamp ) {
+		return '';
+	}
+
+	$seconds_per_minute = 60;
+	$seconds_per_hour   = 3600;
+	$seconds_per_day    = 86400;
+	$seconds_per_month  = 2592000;
+	$seconds_per_year   = 31104000;
+	$time               = strtotime( $timestamp );
+	$current_time       = time();
+
+	// creates the "remaining time" string. This always starts with an "In...".
+	$time_remaining = '';
+
+	// finds the time difference.
+	$time_difference = $current_time - $time;
+
+	// Bail if the event is past.
+	if ( $time_difference > 0 ) {
+		return '';
+	}
+	$time_difference = abs( $time_difference );
+
+	// less than 29secs.
+	if ( $time_difference <= 29 ) {
+
+		$time_remaining = 'less than a minute';
+
+	} elseif ( $time_difference > 29 && $time_difference <= 89 ) {
+
+		// more than 29secs and less than 1min29secss.
+		$time_remaining = '1 minute';
+
+	} elseif (
+		$time_difference > 89 &&
+		$time_difference <= ( ( $seconds_per_minute * 44 ) + 29 )
+	) {
+		// between 1min30secs and 44mins29secs.
+		$minutes        = floor( $time_difference / $seconds_per_minute );
+		$time_remaining = $minutes . ' minutes';
+	} elseif (
+		$time_difference > ( ( $seconds_per_minute * 44 ) + 29 )
+		&&
+		$time_difference < ( ( $seconds_per_minute * 89 ) + 29 )
+	) {
+		// between 44mins30secs and 1hour29mins29secs.
+		$time_remaining = '1 hour';
+	} elseif (
+		$time_difference > ( ( $seconds_per_minute * 89 ) + 29 ) &&
+		$time_difference <= ( ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29
+		)
+	) {
+		// between 1hour29mins30secs and 23hours59mins29secs.
+		$hours          = floor( $time_difference / $seconds_per_hour );
+		$time_remaining = $hours . ' hours';
+	} elseif (
+		$time_difference > ( ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
+		$time_difference <= ( ( $seconds_per_hour * 47 ) + ( $seconds_per_minute * 59 ) + 29 )
+	) {
+		// between 23hours59mins30secs and 47hours59mins29secs.
+		$time_remaining = '1 day';
+	} elseif (
+		$time_difference > ( ( $seconds_per_hour * 47 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
+		$time_difference <= ( ( $seconds_per_day * 29 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 )
+	) {
+		// between 47hours59mins30secs and 29days23hours59mins29secs.
+		$days           = floor( $time_difference / $seconds_per_day );
+		$time_remaining = $days . ' days';
+	} elseif (
+		$time_difference > ( ( $seconds_per_day * 29 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
+		$time_difference <= ( ( $seconds_per_day * 59 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 )
+	) {
+		// between 29days23hours59mins30secs and 59days23hours59mins29secs.
+		$time_remaining = '1 month';
+	} elseif (
+		$time_difference > ( ( $seconds_per_day * 59 ) + ( $seconds_per_hour * 23 ) + ( $seconds_per_minute * 59 ) + 29 ) &&
+		$time_difference < $seconds_per_year
+	) {
+		// between 59days23hours59mins30secs and 1year (minus 1sec).
+		$months         = round( $time_difference / $seconds_per_month );
+		$time_remaining = $months . ' months';
+	} elseif (
+		$time_difference >= $seconds_per_year &&
+		$time_difference < ( $seconds_per_year * 2 )
+	) {
+		// between 1year and 2years (minus 1sec).
+		$time_remaining = '1 year';
+	} else {
+		// 2years or more.
+		$years          = floor( $time_difference / $seconds_per_year );
+		$time_remaining = $years . ' years';
+	}
+
+	return $time_remaining;
+
 }
