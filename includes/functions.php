@@ -122,28 +122,6 @@ function sel_update_event( $id, $event ) {
 }
 
 /**
- * Custom post type for events
- *
- * @since 1.0.0
- *
- * @return string $post_type Post type for events.
- */
-function sel_post_type() {
-	return 'simple-event';
-}
-
-/**
- * Taxonomy for simple event
- *
- * @since 1.0.0
- *
- * @return string $taxonomy Taxonomy for event.
- */
-function sel_taxonomy() {
-	return 'event-tag';
-}
-
-/**
  * Recursive sanitation for an array.
  *
  * @param array $array Array of data to sanitize.

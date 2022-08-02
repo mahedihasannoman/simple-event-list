@@ -8,6 +8,7 @@
 
 namespace SimpleEventList\Cli;
 
+use SimpleEventList\Emails\ImportNotification;
 use SimpleEventList\Model\Event;
 
 defined( 'ABSPATH' ) || exit;
@@ -77,7 +78,7 @@ class ImportEvents {
 						}
 
 						// Send email notification.
-						sel_send_import_notification( $inserted, $updated, $failed, count( $events ) );
+						( new ImportNotification( $inserted, $updated, $failed, count( $events ) ) )->send();
 
 						// translators: %d: event inserted or updated or failed.
 						\WP_CLI::success( sprintf( esc_html__( '%1$d event(s) are inserted, %2$d event(s) are updated, and %3$d event(s) failed to insert or update!', 'simple-event-list' ), $inserted, $updated, $failed ) );
