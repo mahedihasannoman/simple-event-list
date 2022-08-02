@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
  * Setup metaboxes for Simple Events
  *
@@ -6,18 +6,18 @@
  * @since 1.0.0
  */
 
-namespace SimpleEventList;
+namespace SimpleEventList\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Setup_Metaboxes Class.
+ * EventMetaboxes Class.
  *
- * @class Setup_Metaboxes
+ * @class EventMetaboxes
  *
  * @since 1.0.0
  */
-class Setup_Metaboxes {
+class EventMetaboxes {
 
 	/**
 	 * Post type

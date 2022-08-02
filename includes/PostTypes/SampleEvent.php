@@ -1,26 +1,40 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Register Event
+ * SampleEvents Post type Register
  *
  * @package SimpleEventList
  * @since 1.0.0
  */
 
-namespace SimpleEventList;
+namespace SimpleEventList\PostTypes;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Register_Event Class.
+ * SampleEvent Custom post type Class.
  *
- * @class SimpleEventList
+ * @class SampleEvent
  *
  * @since 1.0.0
  */
-class Register_Event {
+class SampleEvent extends RegisterPostType {
 
 	/**
-	 * SE_Register_Event Constructor.
+	 * Post Type
+	 *
+	 * @var string
+	 */
+	protected $post_type = 'simple-event';
+
+	/**
+	 * Taxonomy
+	 *
+	 * @var string
+	 */
+	protected $taxonomy = 'event-tag';
+
+	/**
+	 * SampleEvents Constructor.
 	 *
 	 * @since 1.0.0
 	 *
@@ -38,6 +52,7 @@ class Register_Event {
 	 * @return void
 	 */
 	public function register_event() {
+
 		$labels = array(
 			'name'                  => _x( 'Events', 'Post type general name', 'simple-event-list' ),
 			'singular_name'         => _x( 'Event', 'Post type singular name', 'simple-event-list' ),
@@ -81,7 +96,7 @@ class Register_Event {
 			'publicly_queryable' => false,
 		);
 
-		register_post_type( sel_post_type(), $args );
+		$this->register_post_type( $args );
 
 		// Regisgter taxonomy, NOT hierarchical (like tags).
 		$labels = array(
@@ -115,6 +130,7 @@ class Register_Event {
 
 		);
 
-		register_taxonomy( sel_taxonomy(), sel_post_type(), $args );
+		$this->register_taxonomy( $args );
 	}
+
 }

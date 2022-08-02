@@ -9,12 +9,12 @@
  * Domain Path:     /languages
  * Version:         0.1.0
  *
- * @package         Simple_Event_List
+ * @package         SimpleEventList
  */
 
 // Your code starts here.
 
-use SimpleEventList\Simple_Event_List;
+use SimpleEventList\SimpleEventList;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -28,14 +28,14 @@ if ( ! defined( 'SIMPLE_EVENT_LIST_PLUGIN_FILE' ) ) {
 require __DIR__ . '/vendor/autoload.php';
 
 /**
- * Returns the main instance of simple_event_list.
+ * Returns the main instance of SimpleEventList.
  *
- * @since [SE_LIST_VERSION]
+ * @since 1.0.0
  *
- * @return Simple_Event_List
+ * @return SimpleEventList
  */
-function simple_event_list() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid.
-	return Simple_Event_List::instance();
+function simple_event_list() {
+	return SimpleEventList::instance();
 }
 
 // Global for backwards compatibility.

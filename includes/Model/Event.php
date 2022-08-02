@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
  * Event class.
  *
@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-namespace SimpleEventList;
+namespace SimpleEventList\Model;
 
 defined( 'ABSPATH' ) || exit;
 

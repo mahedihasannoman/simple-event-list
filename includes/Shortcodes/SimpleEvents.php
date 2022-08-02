@@ -1,23 +1,23 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Setup metaboxes for Simple Events
+ * Setup shortcode for Simple Events List
  *
  * @package SimpleEventList
  * @since 1.0.0
  */
 
-namespace SimpleEventList;
+namespace SimpleEventList\Shortcodes;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Shortcode Class.
+ * SimpleEvents Shortcode Class.
  *
- * @class Shortcode
+ * @class SimpleEvents
  *
  * @since 1.0.0
  */
-class Shortcode {
+class SimpleEvents {
 
 	/**
 	 * Constructor

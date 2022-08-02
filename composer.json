@@ -19,9 +19,10 @@
 	  "wp-coding-standards/wpcs": "*"
 	},
     "autoload": {
-        "classmap": [
-            "includes"
-        ]
+        "psr-4": {
+            "SimpleEventList\\": "includes/"
+        },
+        "files": [ "includes/functions.php" ]
     },
     "scripts": {
 		"lint-php": "vendor/bin/phpcs -s",

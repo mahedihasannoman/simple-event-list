@@ -9,7 +9,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-use SimpleEventList\Event;
+use SimpleEventList\Model\Event;
 
 /**
  * Insert an event

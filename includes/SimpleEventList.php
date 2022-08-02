@@ -1,6 +1,6 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Simple_Event_List setup
+ * SimpleEventList setup
  *
  * @package SimpleEventList
  * @since 1.0.0
@@ -8,26 +8,31 @@
 
 namespace SimpleEventList;
 
+use SimpleEventList\Cli\ImportEvents;
+use SimpleEventList\Admin\EventMetaboxes;
+use SimpleEventList\PostTypes\SampleEvent as RegisterEvent;
+use SimpleEventList\Shortcodes\SimpleEvents;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Main Simple_Event_List Class.
+ * Main SimpleEventList Class.
  *
- * @class Simple_Event_List
+ * @class SimpleEventList
  *
  * @since 1.0.0
  */
-final class Simple_Event_List {
+final class SimpleEventList {
 
 	/**
-	 * Simple_Event_List version.
+	 * SimpleEventList version.
 	 *
 	 * @var string
 	 */
 	public $version = '1.0.0';
 
 	/**
-	 * Simple_Event_List Schema version.
+	 * SimpleEventList Schema version.
 	 *
 	 * @since 0.1 started with version string 01.
 	 *
@@ -39,18 +44,18 @@ final class Simple_Event_List {
 	 * The single instance of the class.
 	 *
 	 * @since 1.0.0
-	 * @var Simple_Event_List
+	 * @var SimpleEventList
 	 */
 	protected static $_instance = null;
 
 	/**
-	 * Main Simple_Event_List Instance.
+	 * Main SimpleEventList Instance.
 	 *
-	 * Ensures only one instance of Simple_Event_List is loaded or can be loaded.
+	 * Ensures only one instance of SimpleEventList is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
-	 * @return Simple_Event_List - Main instance.
+	 * @return SimpleEventList - Main instance.
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -60,7 +65,7 @@ final class Simple_Event_List {
 	}
 
 	/**
-	 * Simple_Event_List Constructor.
+	 * SimpleEventList Constructor.
 	 *
 	 * @since 1.0.0
 	 *
@@ -113,20 +118,21 @@ final class Simple_Event_List {
 		require_once SIMPLE_EVENT_LIST_ABSPATH . '/includes/functions.php';
 
 		if ( $this->is_request( 'admin' ) ) {
-			new Setup_Metaboxes();
+			new EventMetaboxes();
 		}
 
 		// CLI Request.
 		if ( $this->is_request( 'cli' ) ) {
-			\WP_CLI::add_command( 'simple-events', new CLI_Import_Events() );
+			\WP_CLI::add_command( 'simple-events', new ImportEvents() );
 		}
 
 		// Shortcode.
 		if ( $this->is_request( 'frontend' ) ) {
-			new Shortcode();
+			new SimpleEvents();
 		}
 
-		new Register_Event();
+		// Register Simple Event post type.
+		new RegisterEvent();
 
 	}
 

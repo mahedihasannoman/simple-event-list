@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
  * Setup cli command for importing events.
  *
@@ -6,20 +6,20 @@
  * @since 1.0.0
  */
 
-namespace SimpleEventList;
+namespace SimpleEventList\Cli;
 
-use SimpleEventList\Event;
+use SimpleEventList\Model\Event;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * CLI_Import_Events Class.
+ * ImportEvents Class.
  *
- * @class CLI_Import_Events
+ * @class ImportEvents
  *
  * @since 1.0.0
  */
-class CLI_Import_Events {
+class ImportEvents {
 
 	/**
 	 * Handle CLI command to import events from JSON file
