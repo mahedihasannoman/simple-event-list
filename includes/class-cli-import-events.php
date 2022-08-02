@@ -8,6 +8,8 @@
 
 namespace SimpleEventList;
 
+use SimpleEventList\Event;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -46,7 +48,7 @@ class CLI_Import_Events {
 						foreach ( $events as $event ) {
 
 							// Check if event is already exists.
-							$post_id = sel_get_post_id( $event['id'] );
+							$post_id = Event::get_ctp_id( $event['id'] );
 							if ( ! is_null( $post_id ) ) {
 								// Update the event.
 								$result = sel_update_event( $post_id, $event );

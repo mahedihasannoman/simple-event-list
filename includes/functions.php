@@ -9,6 +9,8 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
+use SimpleEventList\Event;
+
 /**
  * Insert an event
  *
@@ -28,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  *
- * @return mixed $event_id Event id or false.
+ * @return bool True on success.
  */
 function sel_insert_event( $event ) {
 
@@ -47,34 +49,20 @@ function sel_insert_event( $event ) {
 
 	$args = wp_parse_args( $event, $defaults );
 
-	$event_args = array(
-		'post_title'   => sanitize_text_field( $args['title'] ),
-		'post_type'    => sel_post_type(),
-		'post_staus'   => sel_post_status( $args['timestamp'] ),
-		'post_content' => wp_kses_post( $args['about'] ),
-		'meta_input'   => array(
-			'_simple_event_id'        => sanitize_text_field( $args['id'] ),
-			'_simple_event_organizer' => sanitize_text_field( $args['organizer'] ),
-			'_simple_event_email'     => sanitize_email( $args['email'] ),
-			'_simple_event_time'      => sanitize_text_field( $args['timestamp'] ),
-			'_simple_event_address'   => sanitize_text_field( $args['address'] ),
-			'_simple_event_latitude'  => sanitize_text_field( $args['latitude'] ),
-			'_simple_event_longitude' => sanitize_text_field( $args['longitude'] ),
-		),
-	);
+	$event = new Event();
 
-	$event_id = wp_insert_post( $event_args );
+	$event->id        = $args['id'];
+	$event->title     = $args['title'];
+	$event->organizer = $args['organizer'];
+	$event->about     = $args['about'];
+	$event->timestamp = $args['timestamp'];
+	$event->email     = $args['email'];
+	$event->address   = $args['address'];
+	$event->latitude  = $args['latitude'];
+	$event->longitude = $args['longitude'];
+	$event->tags      = $args['tags'];
 
-	if ( ! is_wp_error( $event_id ) ) {
-		wp_set_object_terms( $event_id, sel_recursive_sanitize_text_field( $args['tags'] ), sel_taxonomy() );
-		if ( 'publish' === sel_post_status( $args['timestamp'] ) ) {
-			wp_publish_post( $event_id );
-		}
-	} else {
-		return false;
-	}
-
-	return $event_id;
+	return $event->save();
 }
 
 /**
@@ -98,7 +86,7 @@ function sel_insert_event( $event ) {
  *
  * @since 1.0.0
  *
- * @return mixed $event_id Event id or false.
+ * @return bool True on success.
  */
 function sel_update_event( $id, $event ) {
 
@@ -117,74 +105,20 @@ function sel_update_event( $id, $event ) {
 
 	$args = wp_parse_args( $event, $defaults );
 
-	$event_args = array(
-		'ID'           => $id,
-		'post_title'   => sanitize_text_field( $args['title'] ),
-		'post_type'    => sel_post_type(),
-		'post_staus'   => sel_post_status( $args['timestamp'] ),
-		'post_content' => wp_kses_post( $args['about'] ),
-		'meta_input'   => array(
-			'_simple_event_id'        => sanitize_text_field( $args['id'] ),
-			'_simple_event_organizer' => sanitize_text_field( $args['organizer'] ),
-			'_simple_event_email'     => sanitize_email( $args['email'] ),
-			'_simple_event_time'      => sanitize_text_field( $args['timestamp'] ),
-			'_simple_event_address'   => sanitize_text_field( $args['address'] ),
-			'_simple_event_latitude'  => sanitize_text_field( $args['latitude'] ),
-			'_simple_event_longitude' => sanitize_text_field( $args['longitude'] ),
-		),
-	);
+	$event = new Event( $id );
 
-	$event_id = wp_update_post( $event_args );
-	if ( ! is_wp_error( $event_id ) ) {
-		wp_set_object_terms( $event_id, sel_recursive_sanitize_text_field( $args['tags'] ), sel_taxonomy() );
-		if ( 'publish' === sel_post_status( $args['timestamp'] ) ) {
-			wp_publish_post( $event_id );
-		}
-	} else {
-		return false;
-	}
+	$event->id        = $args['id'];
+	$event->title     = $args['title'];
+	$event->organizer = $args['organizer'];
+	$event->about     = $args['about'];
+	$event->timestamp = $args['timestamp'];
+	$event->email     = $args['email'];
+	$event->address   = $args['address'];
+	$event->latitude  = $args['latitude'];
+	$event->longitude = $args['longitude'];
+	$event->tags      = $args['tags'];
 
-	return $event_id;
-}
-
-/**
- * Get post ID by Event ID.
- *
- * @param int $event_id Event ID.
- *
- * @return int|NULL $post_id Post ID or NULL.
- */
-function sel_get_post_id( $event_id ) {
-	global $wpdb;
-
-	$cache_key = 'simple_event_db_result_' . $event_id;
-	$post_id   = wp_cache_get( $cache_key );
-	if ( false === $post_id ) {
-		$post_id = $wpdb->get_var( // phpcs:ignore WordPress.Sniffs.DB.DirectDatabaseQuery
-			$wpdb->prepare(
-				"SELECT `post_id` FROM {$wpdb->postmeta} WHERE `meta_key` = '_simple_event_id' AND `meta_value` = %d",
-				(int) $event_id
-			)
-		);
-		wp_cache_set( $cache_key, $post_id );
-	}
-
-	return $post_id;
-}
-
-/**
- * Return the post status depending on timestamp
- *
- * @param string $timestamp Event timestamp.
- *
- * @return string $status Status of the event.
- */
-function sel_post_status( $timestamp ) {
-	$status = 'draft';
-	if ( strtotime( $timestamp ) > strtotime( current_time( 'mysql' ) ) ) {
-		$status = 'publish';
-	}
-	return $status;
+	return $event->save();
 }
 
 /**
