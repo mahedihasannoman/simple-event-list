@@ -8,6 +8,8 @@
 
 namespace SimpleEventList\Shortcodes;
 
+use SimpleEventList\Model\Event;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -57,7 +59,7 @@ class SimpleEvents {
 			return sprintf( '<p>%s</p>', esc_html__( 'Template does not exists.', 'simple-event-list' ) );
 		}
 
-		$events = sel_get_events();
+		$events = Event::get_all();
 		ob_start();
 		include $template_path;
 		return ob_get_clean();

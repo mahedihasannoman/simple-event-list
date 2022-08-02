@@ -8,6 +8,9 @@
 
 namespace SimpleEventList\Admin;
 
+use SimpleEventList\SimpleEventList;
+use SimpleEventList\PostTypes\SampleEvent;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -44,14 +47,9 @@ class EventMetaboxes {
 	 * Constructor for SE_Setup_Metaboxes.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param string $post_type custom post type for simple event.
 	 */
-	public function __construct( $post_type = '' ) {
-
-		if ( '' === $post_type ) {
-			$this->post_type = sel_post_type();
-		}
+	public function __construct() {
+		$this->post_type = SampleEvent::post_type();
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_post' ), 100 );
 	}
@@ -64,128 +62,57 @@ class EventMetaboxes {
 	 * @return void
 	 */
 	public function add_meta_boxes() {
-
-		$metaboxes = array(
-			'organizer' => array(
-				'name'     => __( 'Organizer', 'simple-event-list' ),
-				'callback' => array( $this, 'render_organizer_field' ),
-			),
-			'email'     => array(
-				'name'     => __( 'Email', 'simple-event-list' ),
-				'callback' => array( $this, 'render_email_field' ),
-			),
-			'timestamp' => array(
-				'name'     => __( 'Time', 'simple-event-list' ),
-				'callback' => array( $this, 'render_time_field' ),
-			),
-			'address'   => array(
-				'name'     => __( 'Address', 'simple-event-list' ),
-				'callback' => array( $this, 'render_address_field' ),
-			),
-			'latitude'  => array(
-				'name'     => __( 'Latitude', 'simple-event-list' ),
-				'callback' => array( $this, 'render_latitude_field' ),
-			),
-			'longitude' => array(
-				'name'     => __( 'Longitude', 'simple-event-list' ),
-				'callback' => array( $this, 'render_longitude_field' ),
-			),
-		);
-
-		foreach ( $metaboxes as $key => $metabox ) {
-			add_meta_box( 'simple-event-' . $key, $metabox['name'], $metabox['callback'], $this->post_type, 'side', 'high' );
-		}
+		add_meta_box( 'simple-event-metabox', __( 'Event Metadata', 'simple-event-list' ), array( $this, 'render_metabox' ), $this->post_type, 'side', 'high' );
 
 	}
 
 	/**
-	 * Render organizer field
-	 *
-	 * @since 1.0.0
+	 * Render metabox
 	 *
 	 * @param WP_Post $post The object for the current post/page.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return void
 	 */
-	public function render_organizer_field( $post ) {
+	public function render_metabox( $post ) {
 		wp_nonce_field( $this->nonce_value, $this->nonce );
-		$value = get_post_meta( $post->ID, '_simple_event_organizer', true );
-		echo '<input type="text" name="_simple_event_organizer" value="' . esc_attr( $value ) . '" >';
-	}
+		$organizer = get_post_meta( $post->ID, '_simple_event_organizer', true );
+		$email     = get_post_meta( $post->ID, '_simple_event_email', true );
+		$time      = get_post_meta( $post->ID, '_simple_event_time', true );
+		$address   = get_post_meta( $post->ID, '_simple_event_address', true );
+		$latitude  = get_post_meta( $post->ID, '_simple_event_latitude', true );
+		$longitude = get_post_meta( $post->ID, '_simple_event_longitude', true );
 
-	/**
-	 * Render email field
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param WP_Post $post The object for the current post/page.
-	 *
-	 * @return void
-	 */
-	public function render_email_field( $post ) {
-		wp_nonce_field( $this->nonce_value, $this->nonce );
-		$value = get_post_meta( $post->ID, '_simple_event_email', true );
-		echo '<input type="email" name="_simple_event_email" value="' . esc_attr( $value ) . '" >';
-	}
+		?>
+		<div class="sel_form_container">
+			<div class="sel_form_field">
+				<label for="_simple_event_organizer"><?php echo esc_html__( 'Organizer', 'simple-event-list' ); ?></label>
+				<input type="text" name="_simple_event_organizer" value="<?php echo esc_attr( $organizer ); ?>" >
+			</div>
+			<div class="sel_form_field">
+				<label for="_simple_event_email"><?php echo esc_html__( 'Email', 'simple-event-list' ); ?></label>
+				<input type="email" name="_simple_event_email" value="<?php echo esc_attr( $email ); ?>" >
+			</div>
+			<div class="sel_form_field">
+				<label for="_simple_event_time"><?php echo esc_html__( 'Timestamp', 'simple-event-list' ); ?></label>
+				<input type="text" name="_simple_event_time" value="<?php echo esc_attr( $time ); ?>" >
+			</div>
+			<div class="sel_form_field">
+				<label for="_simple_event_address"><?php echo esc_html__( 'Address', 'simple-event-list' ); ?></label>
+				<input type="text" name="_simple_event_address" value="<?php echo esc_attr( $address ); ?>" >
+			</div>
+			<div class="sel_form_field">
+				<label for="_simple_event_latitude"><?php echo esc_html__( 'Latitude', 'simple-event-list' ); ?></label>
+				<input type="text" name="_simple_event_latitude" value="<?php echo esc_attr( $latitude ); ?>" >
+			</div>
+			<div class="sel_form_field">
+				<label for="_simple_event_longitude"><?php echo esc_html__( 'Longitude', 'simple-event-list' ); ?></label>
+				<input type="text" name="_simple_event_longitude" value="<?php echo esc_attr( $longitude ); ?>" >
+			</div>
+		</div>
+		<?php
 
-	/**
-	 * Render time field
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param WP_Post $post The object for the current post/page.
-	 *
-	 * @return void
-	 */
-	public function render_time_field( $post ) {
-		wp_nonce_field( $this->nonce_value, $this->nonce );
-		$value = get_post_meta( $post->ID, '_simple_event_time', true );
-		echo '<input type="text" name="_simple_event_time" value="' . esc_attr( $value ) . '" >';
-	}
-
-	/**
-	 * Render address field
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param WP_Post $post The object for the current post/page.
-	 *
-	 * @return void
-	 */
-	public function render_address_field( $post ) {
-		wp_nonce_field( $this->nonce_value, $this->nonce );
-		$value = get_post_meta( $post->ID, '_simple_event_address', true );
-		echo '<textarea name="_simple_event_address"> ' . esc_attr( $value ) . ' </textarea>';
-	}
-
-	/**
-	 * Render latitude field
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param WP_Post $post The object for the current post/page.
-	 *
-	 * @return void
-	 */
-	public function render_latitude_field( $post ) {
-		wp_nonce_field( $this->nonce_value, $this->nonce );
-		$value = get_post_meta( $post->ID, '_simple_event_latitude', true );
-		echo '<input type="text" name="_simple_event_latitude" value="' . esc_attr( $value ) . '" >';
-	}
-
-	/**
-	 * Render longitude field
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param WP_Post $post The object for the current post/page.
-	 *
-	 * @return void
-	 */
-	public function render_longitude_field( $post ) {
-		wp_nonce_field( $this->nonce_value, $this->nonce );
-		$value = get_post_meta( $post->ID, '_simple_event_longitude', true );
-		echo '<input type="text" name="_simple_event_longitude" value="' . esc_attr( $value ) . '" >';
 	}
 
 	/**

@@ -24,14 +24,14 @@ abstract class RegisterPostType {
 	 *
 	 * @var string
 	 */
-	protected $post_type;
+	protected const POST_TYPE = '';
 
 	/**
 	 * Taxonomy
 	 *
 	 * @var string
 	 */
-	protected $taxonomy;
+	protected const TAXONOMY = '';
 
 	/**
 	 * Register post type
@@ -43,8 +43,8 @@ abstract class RegisterPostType {
 	 * @return void
 	 */
 	protected function register_post_type( $args ) {
-		if ( '' !== $this->post_type ) {
-			register_post_type( $this->post_type, $args );
+		if ( '' !== static::POST_TYPE ) {
+			register_post_type( static::POST_TYPE, $args );
 		}
 	}
 
@@ -58,8 +58,8 @@ abstract class RegisterPostType {
 	 * @return void
 	 */
 	protected function register_taxonomy( $args ) {
-		if ( '' !== $this->post_type && '' !== $this->taxonomy ) {
-			register_taxonomy( $this->taxonomy, $this->post_type, $args );
+		if ( '' !== static::POST_TYPE && '' !== static::TAXONOMY ) {
+			register_taxonomy( static::TAXONOMY, static::POST_TYPE, $args );
 		}
 	}
 }

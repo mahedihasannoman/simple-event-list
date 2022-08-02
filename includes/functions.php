@@ -195,52 +195,6 @@ function sel_send_import_notification( $inserted, $updated, $failed, $total ) {
 }
 
 /**
- * Get all events data. This function has Memoization.
- *
- * @since 1.0.0
- *
- * @return Array $events Events array.
- */
-function sel_get_events() {
-
-	static $events = null;
-
-	if ( is_null( $events ) ) {
-		$args  = array(
-			'post_type'      => sel_post_type(),
-			'post_status'    => 'publish',
-			'posts_per_page' => -1,
-			'meta_key'       => '_simple_event_time',
-			'orderby'        => 'meta_value',
-			'order'          => 'ASC',
-		);
-		$query = new WP_Query( $args );
-
-		$events = array();
-
-		if ( ! empty( $query->posts ) ) {
-			foreach ( $query->posts as $post ) {
-				$events[] = array(
-					'id'        => get_post_meta( $post->ID, '_simple_event_id', true ),
-					'title'     => $post->post_title,
-					'about'     => $post->post_content,
-					'organizer' => get_post_meta( $post->ID, '_simple_event_organizer', true ),
-					'timestamp' => get_post_meta( $post->ID, '_simple_event_time', true ),
-					'email'     => get_post_meta( $post->ID, '_simple_event_email', true ),
-					'address'   => get_post_meta( $post->ID, '_simple_event_address', true ),
-					'latitude'  => get_post_meta( $post->ID, '_simple_event_latitude', true ),
-					'longitude' => get_post_meta( $post->ID, '_simple_event_longitude', true ),
-					'tags'      => wp_get_object_terms( $post->ID, sel_taxonomy(), array( 'fields' => 'slugs' ) ),
-				);
-			}
-		}
-	}
-
-	return $events;
-
-}
-
-/**
  * Convert timestamp to relative time.
  *
  * @param string $timestamp Timestamp.

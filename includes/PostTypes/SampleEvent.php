@@ -24,14 +24,14 @@ class SampleEvent extends RegisterPostType {
 	 *
 	 * @var string
 	 */
-	protected $post_type = 'simple-event';
+	protected const POST_TYPE = 'simple-event';
 
 	/**
 	 * Taxonomy
 	 *
 	 * @var string
 	 */
-	protected $taxonomy = 'event-tag';
+	protected const TAXONOMY = 'event-tag';
 
 	/**
 	 * SampleEvents Constructor.
@@ -131,6 +131,28 @@ class SampleEvent extends RegisterPostType {
 		);
 
 		$this->register_taxonomy( $args );
+	}
+
+	/**
+	 * Get the post type
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public static function post_type() {
+		return static::POST_TYPE;
+	}
+
+	/**
+	 * Get the taxonomy
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public static function taxonomy() {
+		return static::TAXONOMY;
 	}
 
 }

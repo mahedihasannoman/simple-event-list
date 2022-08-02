@@ -8,6 +8,8 @@
 
 namespace SimpleEventList\Model;
 
+use SimpleEventList\PostTypes\SampleEvent;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -176,7 +178,7 @@ class Event {
 
 		$event_args = array(
 			'post_title'   => sanitize_text_field( $this->title ),
-			'post_type'    => sel_post_type(),
+			'post_type'    => SampleEvent::post_type(),
 			'post_status'  => $this->post_status( $this->timestamp ),
 			'post_content' => wp_kses_post( $this->about ),
 			'meta_input'   => array(
@@ -200,7 +202,7 @@ class Event {
 		}
 
 		if ( ! is_wp_error( $event_id ) ) {
-			wp_set_object_terms( $event_id, sel_recursive_sanitize_text_field( $this->tags ), sel_taxonomy() );
+			wp_set_object_terms( $event_id, sel_recursive_sanitize_text_field( $this->tags ), SampleEvent::taxonomy() );
 		} else {
 			return false;
 		}
@@ -234,19 +236,6 @@ class Event {
 	}
 
 	/**
-	 * Get the event tags
-	 *
-	 * @param int $post_id Event post id.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return array
-	 */
-	private function get_tags( $post_id ) {
-		return wp_get_object_terms( $post_id, sel_taxonomy(), array( 'fields' => 'slugs' ) );
-	}
-
-	/**
 	 * Get the post status by timestamp
 	 *
 	 * @param string $timestamp Timestamp of the event.
@@ -262,4 +251,57 @@ class Event {
 		}
 		return $status;
 	}
+
+	/**
+	 * Get All events
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
+	public static function get_all() {
+		$args  = array(
+			'post_type'      => SampleEvent::post_type(),
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'meta_key'       => '_simple_event_time',
+			'orderby'        => 'meta_value',
+			'order'          => 'ASC',
+		);
+		$query = new \WP_Query( $args );
+
+		$events = array();
+
+		if ( ! empty( $query->posts ) ) {
+			foreach ( $query->posts as $post ) {
+				$events[] = array(
+					'id'        => get_post_meta( $post->ID, '_simple_event_id', true ),
+					'title'     => $post->post_title,
+					'about'     => $post->post_content,
+					'organizer' => get_post_meta( $post->ID, '_simple_event_organizer', true ),
+					'timestamp' => get_post_meta( $post->ID, '_simple_event_time', true ),
+					'email'     => get_post_meta( $post->ID, '_simple_event_email', true ),
+					'address'   => get_post_meta( $post->ID, '_simple_event_address', true ),
+					'latitude'  => get_post_meta( $post->ID, '_simple_event_latitude', true ),
+					'longitude' => get_post_meta( $post->ID, '_simple_event_longitude', true ),
+					'tags'      => wp_get_object_terms( $post->ID, SampleEvent::taxonomy(), array( 'fields' => 'slugs' ) ),
+				);
+			}
+		}
+		return $events;
+	}
+
+	/**
+	 * Get the event tags
+	 *
+	 * @param int $post_id Event post id.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
+	private function get_tags( $post_id ) {
+		return wp_get_object_terms( $post_id, SampleEvent::taxonomy(), array( 'fields' => 'slugs' ) );
+	}
+
 }
