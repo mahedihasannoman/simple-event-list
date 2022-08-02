@@ -10,6 +10,7 @@ namespace SimpleEventList;
 
 use SimpleEventList\Cli\ImportEvents;
 use SimpleEventList\Admin\EventMetaboxes;
+use SimpleEventList\Admin\HelpMenu;
 use SimpleEventList\PostTypes\SampleEvent as RegisterEvent;
 use SimpleEventList\Shortcodes\SimpleEvents;
 
@@ -32,21 +33,12 @@ final class SimpleEventList {
 	public $version = '1.0.0';
 
 	/**
-	 * SimpleEventList Schema version.
-	 *
-	 * @since 0.1 started with version string 01.
-	 *
-	 * @var string
-	 */
-	public $db_version = '01';
-
-	/**
 	 * The single instance of the class.
 	 *
 	 * @since 1.0.0
 	 * @var SimpleEventList
 	 */
-	protected static $_instance = null;
+	protected static $instance = null;
 
 	/**
 	 * Main SimpleEventList Instance.
@@ -58,10 +50,10 @@ final class SimpleEventList {
 	 * @return SimpleEventList - Main instance.
 	 */
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
-		return self::$_instance;
+		return self::$instance;
 	}
 
 	/**
@@ -108,6 +100,18 @@ final class SimpleEventList {
 	}
 
 	/**
+	 * Get the correct filename suffix for minified assets.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function minified_asset_suffix() {
+		$ext = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+		return $ext;
+	}
+
+	/**
 	 * Include required core files used in admin and on the frontend.
 	 *
 	 * @since 1.0.0
@@ -115,10 +119,10 @@ final class SimpleEventList {
 	 * @return void
 	 */
 	public function includes() {
-		require_once SIMPLE_EVENT_LIST_ABSPATH . '/includes/functions.php';
 
 		if ( $this->is_request( 'admin' ) ) {
 			new EventMetaboxes();
+			new HelpMenu();
 		}
 
 		// CLI Request.
@@ -133,6 +137,8 @@ final class SimpleEventList {
 
 		// Register Simple Event post type.
 		new RegisterEvent();
+		// Register Assets.
+		new Assets();
 
 	}
 

@@ -76,6 +76,7 @@ class EventMetaboxes {
 	 * @return void
 	 */
 	public function render_metabox( $post ) {
+
 		wp_nonce_field( $this->nonce_value, $this->nonce );
 		$organizer = get_post_meta( $post->ID, '_simple_event_organizer', true );
 		$email     = get_post_meta( $post->ID, '_simple_event_email', true );

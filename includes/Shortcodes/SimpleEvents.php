@@ -53,7 +53,7 @@ class SimpleEvents {
 	 * @return string $html HTML content of the shortcode.
 	 */
 	public function shortcode_callback( $attr ) {
-
+		wp_enqueue_style( 'simple-event-list-frontend-css' );
 		$template_path = SIMPLE_EVENT_LIST_ABSPATH . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'event-list.php';
 		if ( ! file_exists( $template_path ) ) {
 			return sprintf( '<p>%s</p>', esc_html__( 'Template does not exists.', 'simple-event-list' ) );
