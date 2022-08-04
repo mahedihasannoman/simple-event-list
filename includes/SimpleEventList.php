@@ -13,7 +13,6 @@ use SimpleEventList\Admin\EventMetaboxes;
 use SimpleEventList\Admin\HelpMenu;
 use SimpleEventList\PostTypes\SampleEvent as RegisterEvent;
 use SimpleEventList\REST\REST_APIs;
-use SimpleEventList\Shortcodes\SimpleEvents;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -55,7 +54,7 @@ final class SimpleEventList {
 	 * @since 1.0.0
 	 * @var SimpleEventList
 	 */
-	protected static $instance = null;
+	protected static $_instance = null;
 
 	/**
 	 * Main SimpleEventList Instance.
@@ -67,10 +66,10 @@ final class SimpleEventList {
 	 * @return SimpleEventList - Main instance.
 	 */
 	public static function instance() {
-		if ( is_null( self::$instance ) ) {
-			self::$instance = new self();
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
 		}
-		return self::$instance;
+		return self::$_instance;
 	}
 
 	/**
@@ -82,6 +81,7 @@ final class SimpleEventList {
 	 */
 	public function __construct() {
 		$this->define_constants();
+		$this->includes();
 		$this->init_hooks();
 	}
 
@@ -145,9 +145,9 @@ final class SimpleEventList {
 			\WP_CLI::add_command( 'simple-events', new ImportEvents() );
 		}
 
-		// Shortcode.
+		// Shortcodes.
 		if ( $this->is_request( 'frontend' ) ) {
-			new SimpleEvents();
+			Shortcodes::init();
 		}
 
 		// Register REST routs.
@@ -174,8 +174,6 @@ final class SimpleEventList {
 	 * @return void
 	 */
 	public function on_plugins_loaded() {
-		$this->load_plugin_textdomain();
-		$this->includes();
 		do_action( 'simple_event_list_loaded' );
 	}
 
@@ -188,6 +186,7 @@ final class SimpleEventList {
 	 */
 	private function init_hooks() {
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ), -1 );
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 	}
 
 	/**
@@ -261,25 +260,20 @@ final class SimpleEventList {
 	}
 
 	/**
-	 * Get the plugin url.
+	 * Cloning is forbidden.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return string
 	 */
-	public function plugin_url() {
-		return untrailingslashit( plugins_url( '/', SIMPLE_EVENT_LIST_PLUGIN_FILE ) );
+	public function __clone() {
+		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'simple-event-list' ), '1.0.0' );
 	}
 
 	/**
-	 * Get the plugin path.
+	 * Unserializing instances of this class is forbidden.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return string
 	 */
-	public function plugin_path() {
-		return untrailingslashit( plugin_dir_path( SIMPLE_EVENT_LIST_PLUGIN_FILE ) );
+	public function __wakeup() {
+		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'simple-event-list' ), '1.0.0' );
 	}
-
 }

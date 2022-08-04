@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple Event List 0.1.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-event-list\n"
-"POT-Creation-Date: 2022-08-04 16:50:13+00:00\n"
+"POT-Creation-Date: 2022-08-04 20:34:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,27 +29,27 @@ msgstr ""
 msgid "Event Metadata"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:90 templates/single-event.php:20
+#: includes/Admin/EventMetaboxes.php:87 templates/single-event.php:20
 msgid "Organizer"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:94 templates/single-event.php:21
+#: includes/Admin/EventMetaboxes.php:91 templates/single-event.php:21
 msgid "Email"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:98
+#: includes/Admin/EventMetaboxes.php:95
 msgid "Timestamp"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:102 templates/single-event.php:22
+#: includes/Admin/EventMetaboxes.php:99 templates/single-event.php:22
 msgid "Address"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:106 templates/single-event.php:23
+#: includes/Admin/EventMetaboxes.php:103 templates/single-event.php:23
 msgid "Latitude"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:110 templates/single-event.php:24
+#: includes/Admin/EventMetaboxes.php:107 templates/single-event.php:24
 msgid "Longitude"
 msgstr ""
 
@@ -84,225 +84,232 @@ msgid ""
 "failed to insert or update!"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:96
+#: includes/CLI/ImportEvents.php:95
 msgid "Source not found. Unable to import events"
 msgstr ""
 
-#: includes/Emails/ImportNotification.php:90 includes/functions.php:160
+#: includes/Emails/ImportNotification.php:90
 #. translators: Event import notification email subject. %s: Site title.
-#. translators: Password change notification email subject. %s: Site title.
 msgid "[%s]: Events import has been finished!"
 msgstr ""
 
-#: includes/Emails/ImportNotification.php:103 includes/functions.php:165
+#: includes/Emails/ImportNotification.php:103
 msgid ""
 "Events import has been finished successfully. Please see the detail report "
 "below."
 msgstr ""
 
-#: includes/Emails/ImportNotification.php:104 includes/functions.php:166
+#: includes/Emails/ImportNotification.php:104
 msgid "Total Event(s): "
 msgstr ""
 
-#: includes/Emails/ImportNotification.php:105 includes/functions.php:167
+#: includes/Emails/ImportNotification.php:105
 msgid "Inserted Event(s): "
 msgstr ""
 
-#: includes/Emails/ImportNotification.php:106 includes/functions.php:168
+#: includes/Emails/ImportNotification.php:106
 msgid "Updated Event(s): "
 msgstr ""
 
-#: includes/Emails/ImportNotification.php:107 includes/functions.php:169
+#: includes/Emails/ImportNotification.php:107
 msgid "Failed Event(s): "
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:61
+#: includes/PostTypes/SampleEvent.php:60
 msgid "Add New"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:62
+#: includes/PostTypes/SampleEvent.php:61
 msgid "Add New event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:63
+#: includes/PostTypes/SampleEvent.php:62
 msgid "New event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:64
+#: includes/PostTypes/SampleEvent.php:63
 msgid "Edit event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:65
+#: includes/PostTypes/SampleEvent.php:64
 msgid "View event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:66
+#: includes/PostTypes/SampleEvent.php:65
 msgid "All events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:67
+#: includes/PostTypes/SampleEvent.php:66
 msgid "Search events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:68
+#: includes/PostTypes/SampleEvent.php:67
 msgid "Parent events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:69
+#: includes/PostTypes/SampleEvent.php:68
 msgid "No events found."
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:70
+#: includes/PostTypes/SampleEvent.php:69
 msgid "No events found in Trash."
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:105
+#: includes/PostTypes/SampleEvent.php:104
 msgid "Search Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:106
+#: includes/PostTypes/SampleEvent.php:105
 msgid "Popular Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:107
+#: includes/PostTypes/SampleEvent.php:106
 msgid "All Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:110
+#: includes/PostTypes/SampleEvent.php:109
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:111
+#: includes/PostTypes/SampleEvent.php:110
 msgid "Update Tag"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:112
+#: includes/PostTypes/SampleEvent.php:111
 msgid "Add New Tag"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:113
+#: includes/PostTypes/SampleEvent.php:112
 msgid "New Tag Name"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:114
+#: includes/PostTypes/SampleEvent.php:113
 msgid "Separate tags with commas"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:115
+#: includes/PostTypes/SampleEvent.php:114
 msgid "Add or remove tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:116
+#: includes/PostTypes/SampleEvent.php:115
 msgid "Choose from the most used tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:117
+#: includes/PostTypes/SampleEvent.php:116
 msgid "No tags found."
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:118
+#: includes/PostTypes/SampleEvent.php:117
 msgid "Tags"
 msgstr ""
 
-#: includes/REST/V2/Events.php:86
+#: includes/REST/V2/Events.php:85
 msgid "A unique numeric ID for the event."
 msgstr ""
 
-#: includes/REST/V2/Events.php:92
+#: includes/REST/V2/Events.php:91
 msgid "Event title"
 msgstr ""
 
-#: includes/REST/V2/Events.php:98
+#: includes/REST/V2/Events.php:97
 msgid "Description of event"
 msgstr ""
 
-#: includes/REST/V2/Events.php:104
+#: includes/REST/V2/Events.php:103
 msgid "Organizer of event"
 msgstr ""
 
-#: includes/REST/V2/Events.php:110
+#: includes/REST/V2/Events.php:109
 msgid "Email of event organizer"
 msgstr ""
 
-#: includes/REST/V2/Events.php:116
+#: includes/REST/V2/Events.php:115
 msgid "Timestamp of event"
 msgstr ""
 
-#: includes/REST/V2/Events.php:122
+#: includes/REST/V2/Events.php:121
 msgid "Address of event"
 msgstr ""
 
-#: includes/REST/V2/Events.php:128
+#: includes/REST/V2/Events.php:127
 msgid "Latitude of event"
 msgstr ""
 
-#: includes/REST/V2/Events.php:134 includes/REST/V2/Events.php:140
+#: includes/REST/V2/Events.php:133 includes/REST/V2/Events.php:139
 msgid "Longitude of event"
 msgstr ""
 
-#: includes/REST/V2/Events.php:146
+#: includes/REST/V2/Events.php:145
 msgid "Tags of event"
 msgstr ""
 
-#: includes/Shortcodes/SimpleEvents.php:59
+#: includes/Shortcodes/SimpleEvents.php:56
 msgid "Template does not exists."
 msgstr ""
 
-#: includes/functions.php:214
+#: includes/SimpleEventList.php:268
+msgid "Cloning is forbidden."
+msgstr ""
+
+#: includes/SimpleEventList.php:277
+msgid "Unserializing instances of this class is forbidden."
+msgstr ""
+
+#: includes/functions.php:180
 msgid "less than a minute"
 msgstr ""
 
-#: includes/functions.php:219
+#: includes/functions.php:183
 msgid "1 minute"
 msgstr ""
 
-#: includes/functions.php:230
+#: includes/functions.php:193
 #. translators: %d: Minutes.
 msgid "%d minutes"
 msgstr ""
 
-#: includes/functions.php:241
+#: includes/functions.php:204
 msgid "1 hour"
 msgstr ""
 
-#: includes/functions.php:255
+#: includes/functions.php:218
 #. translators: %d: Hours.
 msgid "%d hours"
 msgstr ""
 
-#: includes/functions.php:268
+#: includes/functions.php:231
 msgid "1 day"
 msgstr ""
 
-#: includes/functions.php:284
+#: includes/functions.php:247
 #. translators: %d: Days.
 msgid "%d days"
 msgstr ""
 
-#: includes/functions.php:299
+#: includes/functions.php:262
 msgid "1 month"
 msgstr ""
 
-#: includes/functions.php:312
+#: includes/functions.php:275
 #. translators: %d: Months.
 msgid "%d months"
 msgstr ""
 
-#: includes/functions.php:318
+#: includes/functions.php:281
 msgid "1 year"
 msgstr ""
 
-#: includes/functions.php:323
+#: includes/functions.php:286
 #. translators: %d: Years.
 msgid "%d years"
 msgstr ""
 
-#: includes/functions.php:328
+#: includes/functions.php:291
 #. translators: %s: Relative time such as "in 20 minutes" or "in 5 days".
 msgid "in %s"
 msgstr ""
 
-#: includes/functions.php:331
+#: includes/functions.php:294
 #. translators: %s: Relative time such as "in 20 minutes" or "in 5 days".
 msgid "%s ago"
 msgstr ""
@@ -365,79 +372,79 @@ msgstr ""
 msgid "https://www.linkedin.com/in/mahedihasannoman/"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:57
+#: includes/PostTypes/SampleEvent.php:56
 msgctxt "Post type general name"
 msgid "Events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:58
+#: includes/PostTypes/SampleEvent.php:57
 msgctxt "Post type singular name"
 msgid "Event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:59
+#: includes/PostTypes/SampleEvent.php:58
 msgctxt "Admin Menu text"
 msgid "Simple Events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:60
+#: includes/PostTypes/SampleEvent.php:59
 msgctxt "Add New on Toolbar"
 msgid "Event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:71
+#: includes/PostTypes/SampleEvent.php:70
 msgctxt "Overrides the “Featured Image” phrase for this post type. Added in 4.3"
 msgid "Event Cover Image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:72
+#: includes/PostTypes/SampleEvent.php:71
 msgctxt "Overrides the “Set featured image” phrase for this post type. Added in 4.3"
 msgid "Set cover image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:73
+#: includes/PostTypes/SampleEvent.php:72
 msgctxt ""
 "Overrides the “Remove featured image” phrase for this post type. Added in "
 "4.3"
 msgid "Remove cover image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:74
+#: includes/PostTypes/SampleEvent.php:73
 msgctxt ""
 "Overrides the “Use as featured image” phrase for this post type. Added in "
 "4.3"
 msgid "Use as cover image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:75
+#: includes/PostTypes/SampleEvent.php:74
 msgctxt ""
 "The post type archive label used in nav menus. Default “Post Archives”. "
 "Added in 4.4"
 msgid "Event archives"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:76
+#: includes/PostTypes/SampleEvent.php:75
 msgctxt ""
 "Overrides the “Insert into post”/”Insert into page” phrase (used when "
 "inserting media into a post). Added in 4.4"
 msgid "Insert into event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:77
+#: includes/PostTypes/SampleEvent.php:76
 msgctxt ""
 "Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
 "when viewing media attached to a post). Added in 4.4"
 msgid "Uploaded to this event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:78
+#: includes/PostTypes/SampleEvent.php:77
 msgctxt ""
 "Screen reader text for the filter links heading on the post type listing "
 "screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
 msgid "Filter events list"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:79
+#: includes/PostTypes/SampleEvent.php:78
 msgctxt ""
 "Screen reader text for the pagination heading on the post type listing "
 "screen. Default “Posts list navigation”/”Pages list navigation”. Added in "
@@ -445,19 +452,19 @@ msgctxt ""
 msgid "Events list navigation"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:80
+#: includes/PostTypes/SampleEvent.php:79
 msgctxt ""
 "Screen reader text for the items list heading on the post type listing "
 "screen. Default “Posts list”/”Pages list”. Added in 4.4"
 msgid "Events list"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:103
+#: includes/PostTypes/SampleEvent.php:102
 msgctxt "taxonomy general name"
 msgid "Event Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:104
+#: includes/PostTypes/SampleEvent.php:103
 msgctxt "taxonomy singular name"
 msgid "Tag"
 msgstr ""

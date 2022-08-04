@@ -26,7 +26,7 @@ class Events extends \WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		$this->namespace = $GLOBALS['simple_event_list']->slug . '/' . $GLOBALS['simple_event_list']->rest_version;
+		$this->namespace = simple_event_list()->slug . '/' . simple_event_list()->rest_version;
 		$this->rest_base = '/events';
 		$this->register_routes();
 	}

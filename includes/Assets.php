@@ -8,8 +8,6 @@
 
 namespace SimpleEventList;
 
-use SimpleEventList\PostTypes\SampleEvent;
-
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -22,20 +20,6 @@ defined( 'ABSPATH' ) || exit;
 class Assets {
 
 	/**
-	 * Asset file suffix. i.e .min.css
-	 *
-	 * @var string
-	 */
-	private $suffix;
-
-	/**
-	 * Version of the script or style
-	 *
-	 * @var string
-	 */
-	private $version;
-
-	/**
 	 * Constructor
 	 *
 	 * @since 1.0.0
@@ -43,8 +27,6 @@ class Assets {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->suffix  = $GLOBALS['simple_event_list']->minified_asset_suffix();
-		$this->version = $GLOBALS['simple_event_list']->version;
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 	}
@@ -59,9 +41,9 @@ class Assets {
 	public function admin_scripts() {
 		wp_register_style(
 			'simple-event-list-admin-css',
-			SIMPLE_EVENT_LIST_PLUGIN_URL . "assets/css/admin{$this->suffix}.css",
+			SIMPLE_EVENT_LIST_PLUGIN_URL . 'assets/css/admin' . simple_event_list()->minified_asset_suffix() . '.css',
 			array(),
-			$this->version,
+			simple_event_list()->version,
 			'all'
 		);
 	}
@@ -76,9 +58,9 @@ class Assets {
 	public function frontend_scripts() {
 		wp_register_style(
 			'simple-event-list-frontend-css',
-			SIMPLE_EVENT_LIST_PLUGIN_URL . "assets/css/frontend{$this->suffix}.css",
+			SIMPLE_EVENT_LIST_PLUGIN_URL . 'assets/css/frontend' . simple_event_list()->minified_asset_suffix() . '.css',
 			array(),
-			$this->version,
+			simple_event_list()->version,
 			'all'
 		);
 	}

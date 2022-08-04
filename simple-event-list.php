@@ -37,4 +37,4 @@ function simple_event_list() {
 }
 
 // Global for backwards compatibility.
-$GLOBALS['simple_event_list'] = simple_event_list();
+simple_event_list();

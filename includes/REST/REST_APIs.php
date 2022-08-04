@@ -38,7 +38,7 @@ class REST_APIs {
 	 * @return void
 	 */
 	public function rest_init() {
-		$api_version = strtoupper( $GLOBALS['simple_event_list']->rest_version );
+		$api_version = strtoupper( simple_event_list()->rest_version );
 
 		$apis = array(
 			__NAMESPACE__ . "\\{$api_version}\\Events", // Register events REST rounts.

@@ -22,37 +22,34 @@ defined( 'ABSPATH' ) || exit;
 class SimpleEvents {
 
 	/**
+	 * Attributes.
+	 *
+	 * @since 1.0.0
+	 * @var   array
+	 */
+	protected $attributes = array();
+
+	/**
 	 * Constructor
+	 * 
+	 * @param array $attributes Shortcode attributes.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
-	public function __construct() {
-		add_action( 'init', array( $this, 'setup_shortcode' ) );
+	public function __construct( $attributes = array() ) {
+		$this->attributes = $attributes;
 	}
 
 	/**
-	 * Setup shortcode hook
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
-	public function setup_shortcode() {
-		add_shortcode( 'simple-events', array( $this, 'shortcode_callback' ) );
-	}
-
-	/**
-	 * Shortcode callback function
-	 *
-	 * @param Array $attr Array of attributes.
+	 * Get shortcode content
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return string $html HTML content of the shortcode.
 	 */
-	public function shortcode_callback( $attr ) {
+	public function get_content() {
 		wp_enqueue_style( 'simple-event-list-frontend-css' );
 		$template_path = SIMPLE_EVENT_LIST_ABSPATH . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'event-list.php';
 		if ( ! file_exists( $template_path ) ) {

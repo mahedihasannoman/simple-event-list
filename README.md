@@ -34,7 +34,7 @@ To import data, just run the following WP CLI command in terminal `wp simple-eve
 
 ## Show Data ##
 
-To show data, Just add the shortcode to any pages or posts `[simple-events]`
+To show data, Just add the shortcode to any pages or posts `[simple_events]`
 
 ## Export Data ##
 

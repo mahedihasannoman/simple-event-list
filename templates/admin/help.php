@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit; ?>
 				echo sprintf(
 					'%s <span>%s</span>',
 					esc_html__( 'To show data, You can use the following shortcode to display the event list on a page or post:', 'simple-event-list' ),
-					'[simple-events]'
+					'[simple_events]'
 				);
 				?>
 			</p>
@@ -55,7 +55,7 @@ defined( 'ABSPATH' ) || exit; ?>
 				'%1$s <a href="%2$s" target="_blank">%2$s</a>',
 				esc_html__( 'See the full REST URL:', 'simple-event-list' ),
 				esc_url_raw(
-					get_rest_url( null, "{$GLOBALS['simple_event_list']->slug}/{$GLOBALS['simple_event_list']->rest_version}/events" )
+					get_rest_url( null, simple_event_list()->slug . '/' . simple_event_list()->rest_version . '/events' )
 				)
 			);
 			?>
