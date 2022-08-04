@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-namespace SimpleEventList\Cli;
+namespace SimpleEventList\CLI;
 
 use SimpleEventList\Emails\ImportNotification;
 use SimpleEventList\Model\Event;

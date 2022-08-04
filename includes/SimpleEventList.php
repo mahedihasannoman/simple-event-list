@@ -8,10 +8,11 @@
 
 namespace SimpleEventList;
 
-use SimpleEventList\Cli\ImportEvents;
+use SimpleEventList\CLI\ImportEvents;
 use SimpleEventList\Admin\EventMetaboxes;
 use SimpleEventList\Admin\HelpMenu;
 use SimpleEventList\PostTypes\SampleEvent as RegisterEvent;
+use SimpleEventList\REST\REST_APIs;
 use SimpleEventList\Shortcodes\SimpleEvents;
 
 defined( 'ABSPATH' ) || exit;
@@ -31,6 +32,22 @@ final class SimpleEventList {
 	 * @var string
 	 */
 	public $version = '1.0.0';
+
+	/**
+	 * Plugin slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	public $slug = 'simple-event-list';
+
+	/**
+	 * REST API version
+	 *
+	 * @var string
+	 */
+	public $rest_version = 'v2';
 
 	/**
 	 * The single instance of the class.
@@ -124,7 +141,7 @@ final class SimpleEventList {
 			new HelpMenu();
 		}
 
-		// CLI Request.
+		// Register CLI.
 		if ( $this->is_request( 'cli' ) ) {
 			\WP_CLI::add_command( 'simple-events', new ImportEvents() );
 		}
@@ -132,6 +149,11 @@ final class SimpleEventList {
 		// Shortcode.
 		if ( $this->is_request( 'frontend' ) ) {
 			new SimpleEvents();
+		}
+
+		// Register REST routs.
+		if ( $this->is_request( 'rest' ) ) {
+			new REST_APIs();
 		}
 
 		// Register custom post type.
@@ -209,6 +231,8 @@ final class SimpleEventList {
 				return defined( 'DOING_CRON' );
 			case 'cli':
 				return defined( 'WP_CLI' );
+			case 'rest':
+				return $this->is_rest_api_request();
 			case 'frontend':
 				return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ) && ! $this->is_rest_api_request();
 		}
@@ -250,47 +274,6 @@ final class SimpleEventList {
 	 */
 	public function plugin_path() {
 		return untrailingslashit( plugin_dir_path( SIMPLE_EVENT_LIST_PLUGIN_FILE ) );
-	}
-
-	/**
-	 * Get Ajax URL.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string
-	 */
-	public function ajax_url() {
-		return admin_url( 'admin-ajax.php', 'relative' );
-	}
-
-	/**
-	 * Return the API URL for a given request.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string    $request Requested endpoint.
-	 * @param bool|null $ssl     If should use SSL, null if should auto detect. Default: null.
-	 *
-	 * @return string
-	 */
-	public function api_request_url( $request, $ssl = null ) {
-		if ( is_null( $ssl ) ) {
-			$scheme = wp_parse_url( home_url(), PHP_URL_SCHEME );
-		} elseif ( $ssl ) {
-			$scheme = 'https';
-		} else {
-			$scheme = 'http';
-		}
-
-		if ( strstr( get_option( 'permalink_structure' ), '/index.php/' ) ) {
-			$api_request_url = trailingslashit( home_url( '/index.php/simple-event-list-api/' . $request, $scheme ) );
-		} elseif ( get_option( 'permalink_structure' ) ) {
-			$api_request_url = trailingslashit( home_url( '/simple-event-list-api/' . $request, $scheme ) );
-		} else {
-			$api_request_url = add_query_arg( 'simple-event-list-api', $request, trailingslashit( home_url( '', $scheme ) ) );
-		}
-
-		return esc_url_raw( apply_filters( 'simple_event_list_api_request_url', $api_request_url, $request, $ssl ) );
 	}
 
 }
