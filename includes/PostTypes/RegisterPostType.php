@@ -1,8 +1,8 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * SampleEvents Post type Register
+ * Custom Post type Register class
  *
- * @package SimpleEventList
+ * @package SimpleEventList\PostTypes
  * @since 1.0.0
  */
 
@@ -11,9 +11,9 @@ namespace SimpleEventList\PostTypes;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * SampleEvents Custom post type Class.
+ * Register Custom post type Class.
  *
- * @class SampleEvents
+ * @class RegisterPostType
  *
  * @since 1.0.0
  */

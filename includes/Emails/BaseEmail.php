@@ -2,7 +2,7 @@
 /**
  * Setup for base email class
  *
- * @package SimpleEventList
+ * @package SimpleEventList\Emails
  * @since 1.0.0
  */
 

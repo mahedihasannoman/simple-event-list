@@ -11,8 +11,7 @@ namespace SimpleEventList;
 use SimpleEventList\CLI\ImportEvents;
 use SimpleEventList\Admin\EventMetaboxes;
 use SimpleEventList\Admin\HelpMenu;
-use SimpleEventList\PostTypes\SampleEvent as RegisterEvent;
-use SimpleEventList\REST\REST_APIs;
+use SimpleEventList\REST\APIs;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -150,13 +149,13 @@ final class SimpleEventList {
 			Shortcodes::init();
 		}
 
-		// Register REST routs.
+		// Load REST routes.
 		if ( $this->is_request( 'rest' ) ) {
-			new REST_APIs();
+			new APIs();
 		}
 
-		// Register custom post type.
-		new RegisterEvent();
+		// Register custom post types.
+		CustomPostTypes::init();
 
 		// Register Assets.
 		new Assets();

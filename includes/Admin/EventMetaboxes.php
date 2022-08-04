@@ -8,7 +8,7 @@
 
 namespace SimpleEventList\Admin;
 
-use SimpleEventList\PostTypes\SampleEvent;
+use SimpleEventList\PostTypes\SimpleEvent;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -48,7 +48,7 @@ class EventMetaboxes {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		$this->post_type = SampleEvent::post_type();
+		$this->post_type = SimpleEvent::post_type();
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_post' ), 100 );
 	}

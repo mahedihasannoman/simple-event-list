@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple Event List 0.1.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-event-list\n"
-"POT-Creation-Date: 2022-08-04 20:34:35+00:00\n"
+"POT-Creation-Date: 2022-08-04 21:02:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -115,91 +115,91 @@ msgstr ""
 msgid "Failed Event(s): "
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:60
+#: includes/PostTypes/SimpleEvent.php:60
 msgid "Add New"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:61
+#: includes/PostTypes/SimpleEvent.php:61
 msgid "Add New event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:62
+#: includes/PostTypes/SimpleEvent.php:62
 msgid "New event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:63
+#: includes/PostTypes/SimpleEvent.php:63
 msgid "Edit event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:64
+#: includes/PostTypes/SimpleEvent.php:64
 msgid "View event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:65
+#: includes/PostTypes/SimpleEvent.php:65
 msgid "All events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:66
+#: includes/PostTypes/SimpleEvent.php:66
 msgid "Search events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:67
+#: includes/PostTypes/SimpleEvent.php:67
 msgid "Parent events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:68
+#: includes/PostTypes/SimpleEvent.php:68
 msgid "No events found."
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:69
+#: includes/PostTypes/SimpleEvent.php:69
 msgid "No events found in Trash."
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:104
+#: includes/PostTypes/SimpleEvent.php:104
 msgid "Search Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:105
+#: includes/PostTypes/SimpleEvent.php:105
 msgid "Popular Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:106
+#: includes/PostTypes/SimpleEvent.php:106
 msgid "All Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:109
+#: includes/PostTypes/SimpleEvent.php:109
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:110
+#: includes/PostTypes/SimpleEvent.php:110
 msgid "Update Tag"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:111
+#: includes/PostTypes/SimpleEvent.php:111
 msgid "Add New Tag"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:112
+#: includes/PostTypes/SimpleEvent.php:112
 msgid "New Tag Name"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:113
+#: includes/PostTypes/SimpleEvent.php:113
 msgid "Separate tags with commas"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:114
+#: includes/PostTypes/SimpleEvent.php:114
 msgid "Add or remove tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:115
+#: includes/PostTypes/SimpleEvent.php:115
 msgid "Choose from the most used tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:116
+#: includes/PostTypes/SimpleEvent.php:116
 msgid "No tags found."
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:117
+#: includes/PostTypes/SimpleEvent.php:117
 msgid "Tags"
 msgstr ""
 
@@ -247,11 +247,11 @@ msgstr ""
 msgid "Template does not exists."
 msgstr ""
 
-#: includes/SimpleEventList.php:268
+#: includes/SimpleEventList.php:267
 msgid "Cloning is forbidden."
 msgstr ""
 
-#: includes/SimpleEventList.php:277
+#: includes/SimpleEventList.php:276
 msgid "Unserializing instances of this class is forbidden."
 msgstr ""
 
@@ -348,7 +348,7 @@ msgstr ""
 msgid "To export data, you can browse this API endpoint:"
 msgstr ""
 
-#: templates/admin/help.php:56
+#: templates/admin/help.php:57
 msgid "See the full REST URL:"
 msgstr ""
 
@@ -372,79 +372,79 @@ msgstr ""
 msgid "https://www.linkedin.com/in/mahedihasannoman/"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:56
+#: includes/PostTypes/SimpleEvent.php:56
 msgctxt "Post type general name"
 msgid "Events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:57
+#: includes/PostTypes/SimpleEvent.php:57
 msgctxt "Post type singular name"
 msgid "Event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:58
+#: includes/PostTypes/SimpleEvent.php:58
 msgctxt "Admin Menu text"
 msgid "Simple Events"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:59
+#: includes/PostTypes/SimpleEvent.php:59
 msgctxt "Add New on Toolbar"
 msgid "Event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:70
+#: includes/PostTypes/SimpleEvent.php:70
 msgctxt "Overrides the “Featured Image” phrase for this post type. Added in 4.3"
 msgid "Event Cover Image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:71
+#: includes/PostTypes/SimpleEvent.php:71
 msgctxt "Overrides the “Set featured image” phrase for this post type. Added in 4.3"
 msgid "Set cover image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:72
+#: includes/PostTypes/SimpleEvent.php:72
 msgctxt ""
 "Overrides the “Remove featured image” phrase for this post type. Added in "
 "4.3"
 msgid "Remove cover image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:73
+#: includes/PostTypes/SimpleEvent.php:73
 msgctxt ""
 "Overrides the “Use as featured image” phrase for this post type. Added in "
 "4.3"
 msgid "Use as cover image"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:74
+#: includes/PostTypes/SimpleEvent.php:74
 msgctxt ""
 "The post type archive label used in nav menus. Default “Post Archives”. "
 "Added in 4.4"
 msgid "Event archives"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:75
+#: includes/PostTypes/SimpleEvent.php:75
 msgctxt ""
 "Overrides the “Insert into post”/”Insert into page” phrase (used when "
 "inserting media into a post). Added in 4.4"
 msgid "Insert into event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:76
+#: includes/PostTypes/SimpleEvent.php:76
 msgctxt ""
 "Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
 "when viewing media attached to a post). Added in 4.4"
 msgid "Uploaded to this event"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:77
+#: includes/PostTypes/SimpleEvent.php:77
 msgctxt ""
 "Screen reader text for the filter links heading on the post type listing "
 "screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
 msgid "Filter events list"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:78
+#: includes/PostTypes/SimpleEvent.php:78
 msgctxt ""
 "Screen reader text for the pagination heading on the post type listing "
 "screen. Default “Posts list navigation”/”Pages list navigation”. Added in "
@@ -452,19 +452,19 @@ msgctxt ""
 msgid "Events list navigation"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:79
+#: includes/PostTypes/SimpleEvent.php:79
 msgctxt ""
 "Screen reader text for the items list heading on the post type listing "
 "screen. Default “Posts list”/”Pages list”. Added in 4.4"
 msgid "Events list"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:102
+#: includes/PostTypes/SimpleEvent.php:102
 msgctxt "taxonomy general name"
 msgid "Event Tags"
 msgstr ""
 
-#: includes/PostTypes/SampleEvent.php:103
+#: includes/PostTypes/SimpleEvent.php:103
 msgctxt "taxonomy singular name"
 msgid "Tag"
 msgstr ""

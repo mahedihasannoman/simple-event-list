@@ -2,13 +2,13 @@
 /**
  * Event class.
  *
- * @package SimpleEventList
+ * @package SimpleEventList\Model
  * @since 1.0.0
  */
 
 namespace SimpleEventList\Model;
 
-use SimpleEventList\PostTypes\SampleEvent;
+use SimpleEventList\PostTypes\SimpleEvent;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -175,7 +175,7 @@ class Event {
 	public function save() {
 		$event_args = array(
 			'post_title'   => sanitize_text_field( $this->title ),
-			'post_type'    => SampleEvent::post_type(),
+			'post_type'    => SimpleEvent::post_type(),
 			'post_status'  => $this->post_status( $this->timestamp ),
 			'post_content' => wp_kses_post( $this->about ),
 			'meta_input'   => array(
@@ -199,7 +199,7 @@ class Event {
 		}
 
 		if ( ! is_wp_error( $event_id ) ) {
-			wp_set_object_terms( $event_id, sel_recursive_sanitize_text_field( $this->tags ), SampleEvent::taxonomy() );
+			wp_set_object_terms( $event_id, sel_recursive_sanitize_text_field( $this->tags ), SimpleEvent::taxonomy() );
 		} else {
 			return false;
 		}
@@ -208,7 +208,7 @@ class Event {
 	}
 
 	/**
-	 * Get event cpt id, as specified by event id.
+	 * Get event cpt id by the event id.
 	 *
 	 * @param int $event_id Event id.
 	 *
@@ -258,7 +258,7 @@ class Event {
 	 */
 	public static function get_all() {
 		$args  = array(
-			'post_type'      => SampleEvent::post_type(),
+			'post_type'      => SimpleEvent::post_type(),
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
 			'meta_key'       => '_simple_event_time', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
@@ -281,7 +281,7 @@ class Event {
 					'address'   => get_post_meta( $post->ID, '_simple_event_address', true ),
 					'latitude'  => get_post_meta( $post->ID, '_simple_event_latitude', true ),
 					'longitude' => get_post_meta( $post->ID, '_simple_event_longitude', true ),
-					'tags'      => wp_get_object_terms( $post->ID, SampleEvent::taxonomy(), array( 'fields' => 'slugs' ) ),
+					'tags'      => wp_get_object_terms( $post->ID, SimpleEvent::taxonomy(), array( 'fields' => 'slugs' ) ),
 				);
 			}
 		}
@@ -298,7 +298,7 @@ class Event {
 	 * @return array
 	 */
 	private function get_tags( $post_id ) {
-		return wp_get_object_terms( $post_id, SampleEvent::taxonomy(), array( 'fields' => 'slugs' ) );
+		return wp_get_object_terms( $post_id, SimpleEvent::taxonomy(), array( 'fields' => 'slugs' ) );
 	}
 
 }

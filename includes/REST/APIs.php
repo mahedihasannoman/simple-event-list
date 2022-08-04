@@ -13,14 +13,14 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Class for registering REST APIs.
  *
- * @class REST_APIs
+ * @class APIs
  *
  * @since 1.0.0
  */
-class REST_APIs {
+class APIs {
 
 	/**
-	 * REST_APIs Constructor.
+	 * APIs Constructor.
 	 *
 	 * @since 1.0.0
 	 *
@@ -31,7 +31,7 @@ class REST_APIs {
 	}
 
 	/**
-	 * Register REST Route(s)
+	 * Load REST Routes
 	 *
 	 * @since 1.0.0
 	 *

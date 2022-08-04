@@ -8,7 +8,7 @@
 
 namespace SimpleEventList\Admin;
 
-use SimpleEventList\PostTypes\SampleEvent;
+use SimpleEventList\PostTypes\SimpleEvent;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -36,7 +36,7 @@ class HelpMenu {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->parent = 'edit.php?post_type=' . SampleEvent::post_type();
+		$this->parent = 'edit.php?post_type=' . SimpleEvent::post_type();
 		add_action( 'admin_menu', array( $this, 'add_submenu' ) );
 	}
 

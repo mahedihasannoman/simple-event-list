@@ -49,7 +49,8 @@ defined( 'ABSPATH' ) || exit; ?>
 					'{GET} /wp-json/simple-event-list/v2/events'
 				);
 				?>
-			<br>
+			</p>
+			</p>
 			<?php
 			echo sprintf(
 				'%1$s <a href="%2$s" target="_blank">%2$s</a>',

@@ -1,8 +1,8 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * SampleEvents Post type Register
+ * SimpleEvents Post type Register
  *
- * @package SimpleEventList
+ * @package SimpleEventList\PostTypes
  * @since 1.0.0
  */
 
@@ -11,13 +11,13 @@ namespace SimpleEventList\PostTypes;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * SampleEvent Custom post type Class.
+ * SimpleEvent Custom post type Class.
  *
- * @class SampleEvent
+ * @class SimpleEvent
  *
  * @since 1.0.0
  */
-class SampleEvent extends RegisterPostType {
+class SimpleEvent extends RegisterPostType {
 
 	/**
 	 * Post Type
@@ -34,7 +34,7 @@ class SampleEvent extends RegisterPostType {
 	protected const TAXONOMY = 'event-tag';
 
 	/**
-	 * SampleEvents Constructor.
+	 * SimpleEvents Constructor.
 	 *
 	 * @since 1.0.0
 	 *

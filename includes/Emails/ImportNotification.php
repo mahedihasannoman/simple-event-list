@@ -2,7 +2,7 @@
 /**
  * Setup for email notification after event imported.
  *
- * @package SimpleEventList
+ * @package SimpleEventList\Emails
  * @since 1.0.0
  */
 
@@ -107,5 +107,4 @@ class ImportNotification extends BaseEmail {
 			esc_html__( 'Failed Event(s): ', 'simple-event-list' ) . (int) $this->failed,
 		);
 	}
-
 }
