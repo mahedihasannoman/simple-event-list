@@ -50,7 +50,7 @@ class Events extends \WP_REST_Controller {
 					'permission_callback' => array( $this, 'get_items_permissions_check' ),
 					'args'                => $this->get_collection_params(),
 				),
-				'schema' => array( $this, 'get_item_schema' ),
+				'schema' => array( $this, 'get_public_item_schema' ),
 			)
 		);
 	}
@@ -92,92 +92,63 @@ class Events extends \WP_REST_Controller {
 					'description' => __( 'Event title', 'simple-event-list' ),
 					'type'        => 'string',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
 				),
 				'about'     => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Description of event', 'simple-event-list' ),
 					'type'        => 'string',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => null,
-						// Note: sanitization implemented in self::prepare_item_for_response().
-					),
 				),
 				'organizer' => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Organizer of event', 'simple-event-list' ),
 					'type'        => 'string',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
 				),
 				'email'     => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Email of event organizer', 'simple-event-list' ),
 					'type'        => 'string',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_email',
-					),
 				),
 				'timestamp' => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Timestamp of event', 'simple-event-list' ),
 					'type'        => 'string',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
 				),
 				'address'   => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Address of event', 'simple-event-list' ),
 					'type'        => 'string',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
 				),
 				'latitude'  => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Latitude of event', 'simple-event-list' ),
-					'type'        => 'string',
+					'type'        => 'number',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
+				),
+				'longitude' => array(
+					'context'     => array( 'view' ),
+					'description' => __( 'Longitude of event', 'simple-event-list' ),
+					'type'        => 'number',
+					'readonly'    => true,
 				),
 				'longitude' => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Longitude of event', 'simple-event-list' ),
 					'type'        => 'string',
 					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
-				),
-				'longitude' => array(
-					'context'     => array( 'view' ),
-					'description' => __( 'Longitude of event', 'simple-event-list' ),
-					'type'        => 'string',
-					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => 'sanitize_text_field',
-					),
 				),
 				'tags'      => array(
 					'context'     => array( 'view' ),
 					'description' => __( 'Tags of event', 'simple-event-list' ),
 					'type'        => 'array',
-					'readonly'    => true,
-					'arg_options' => array(
-						'sanitize_callback' => null,
-						// Note: sanitization implemented in self::prepare_item_for_response().
+					'items'       => array(
+						'type' => 'string',
 					),
+					'readonly'    => true,
 				),
 			),
 		);
@@ -185,18 +156,91 @@ class Events extends \WP_REST_Controller {
 	}
 
 	/**
-	 * Retrieve miusages data.
+	 * Prepares a event object for serialization.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array           $event   Event data.
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $event, $request ) {
+		$data   = array();
+		$schema = $this->get_item_schema();
+
+		if ( isset( $schema['properties']['id'] ) ) {
+			$data['id'] = (int) $event['id'];
+		}
+		if ( isset( $schema['properties']['title'] ) ) {
+			$data['title'] = $event['title'];
+		}
+		if ( isset( $schema['properties']['about'] ) ) {
+			$data['about'] = $event['about'];
+		}
+		if ( isset( $schema['properties']['organizer'] ) ) {
+			$data['organizer'] = $event['organizer'];
+		}
+		if ( isset( $schema['properties']['email'] ) ) {
+			$data['email'] = $event['email'];
+		}
+		if ( isset( $schema['properties']['timestamp'] ) ) {
+			$data['timestamp'] = $event['timestamp'];
+		}
+		if ( isset( $schema['properties']['address'] ) ) {
+			$data['address'] = $event['address'];
+		}
+		if ( isset( $schema['properties']['latitude'] ) ) {
+			$data['latitude'] = (float) $event['latitude'];
+		}
+		if ( isset( $schema['properties']['longitude'] ) ) {
+			$data['longitude'] = (float) $event['longitude'];
+		}
+		if ( isset( $schema['properties']['tags'] ) ) {
+			$data['tags'] = (array) $event['tags'];
+		}
+
+		$context = 'view';
+		$data    = $this->add_additional_fields_to_object( $data, $request );
+		$data    = $this->filter_response_by_context( $data, $context );
+
+		// Wrap the data in a response object.
+		$response = rest_ensure_response( $data );
+
+		/**
+		 * Filters a event returned from the REST API.
+		 *
+		 * Allows modification of the event data right before it is returned.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param WP_REST_Response $response  The response object.
+		 * @param array            $event The original event array.
+		 * @param WP_REST_Request  $request   Request used to generate the response.
+		 */
+		return apply_filters( 'rest_prepare_simple_event', $response, $event, $request );
+	}
+
+	/**
+	 * Retrieve all events.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 *
-	 * @return WP_REST_Response | WP_Error
-	 * @api {GET} /wp-json/simple-event-list/v2/events/ Get events data
+	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
+	 * @api {GET} /wp-json/simple-event-list/v2/events/
 	 */
 	public function get_items( $request ) {
-		$retval   = Event::get_all();
-		$response = rest_ensure_response( $retval );
+
+		$data   = array();
+		$events = Event::get_all();
+
+		foreach ( $events as $event ) {
+			$event  = $this->prepare_item_for_response( $event, $request );
+			$data[] = $this->prepare_response_for_collection( $event );
+		}
+
+		$response = rest_ensure_response( $data );
 		return $response;
 	}
 }
