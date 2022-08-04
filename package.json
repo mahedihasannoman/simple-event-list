@@ -1,9 +1,9 @@
 
 {
   "name": "simple-event-list",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "Gruntfile.js",
-  "author": "YOUR NAME HERE",
+  "author": "Md. Mahedi Hasan",
   "scripts" : {
     "start" : "grunt default" ,
     "readme" : "grunt readme",

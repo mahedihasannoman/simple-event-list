@@ -175,6 +175,7 @@ final class SimpleEventList {
 	 * @return void
 	 */
 	public function on_plugins_loaded() {
+		$this->load_plugin_textdomain();
 		$this->includes();
 		do_action( 'simple_event_list_loaded' );
 	}

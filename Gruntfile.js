@@ -30,7 +30,7 @@ module.exports = function( grunt ) {
 		makepot: {
 			target: {
 				options: {
-					domainPath: '/languages',
+					domainPath: '/i18n/languages',
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
 					mainFile: 'simple-event-list.php',
 					potFilename: 'simple-event-list.pot',

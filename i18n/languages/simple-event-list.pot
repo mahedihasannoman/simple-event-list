@@ -1,0 +1,463 @@
+# Copyright (C) 2022 Md. Mahedi Hasan
+# This file is distributed under the same license as the Simple Event List package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Event List 0.1.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/simple-event-list\n"
+"POT-Creation-Date: 2022-08-04 16:33:58+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: includes/Admin/EventMetaboxes.php:64
+msgid "Event Metadata"
+msgstr ""
+
+#: includes/Admin/EventMetaboxes.php:90 templates/single-event.php:20
+msgid "Organizer"
+msgstr ""
+
+#: includes/Admin/EventMetaboxes.php:94 templates/single-event.php:21
+msgid "Email"
+msgstr ""
+
+#: includes/Admin/EventMetaboxes.php:98
+msgid "Timestamp"
+msgstr ""
+
+#: includes/Admin/EventMetaboxes.php:102 templates/single-event.php:22
+msgid "Address"
+msgstr ""
+
+#: includes/Admin/EventMetaboxes.php:106 templates/single-event.php:23
+msgid "Latitude"
+msgstr ""
+
+#: includes/Admin/EventMetaboxes.php:110 templates/single-event.php:24
+msgid "Longitude"
+msgstr ""
+
+#: includes/Admin/HelpMenu.php:53 includes/Admin/HelpMenu.php:54
+msgid "Help"
+msgstr ""
+
+#: includes/CLI/ImportEvents.php:59
+#. translators: %d: Event ID.
+msgid "Event ID: %d updated!"
+msgstr ""
+
+#: includes/CLI/ImportEvents.php:63
+#. translators: %d: Event ID.
+msgid "Event ID: %d update failed."
+msgstr ""
+
+#: includes/CLI/ImportEvents.php:71
+#. translators: %d: Event ID.
+msgid "Event ID: %d inserted!"
+msgstr ""
+
+#: includes/CLI/ImportEvents.php:75
+#. translators: %d: Event ID.
+msgid "Event ID: %d insert failed."
+msgstr ""
+
+#: includes/CLI/ImportEvents.php:84
+#. translators: %d: event inserted or updated or failed.
+msgid ""
+"%1$d event(s) are inserted, %2$d event(s) are updated, and %3$d event(s) "
+"failed to insert or update!"
+msgstr ""
+
+#: includes/CLI/ImportEvents.php:96
+msgid "Source not found. Unable to import events"
+msgstr ""
+
+#: includes/Emails/ImportNotification.php:90 includes/functions.php:160
+#. translators: Event import notification email subject. %s: Site title.
+#. translators: Password change notification email subject. %s: Site title.
+msgid "[%s]: Events import has been finished!"
+msgstr ""
+
+#: includes/Emails/ImportNotification.php:103 includes/functions.php:165
+msgid ""
+"Events import has been finished successfully. Please see the detail report "
+"below."
+msgstr ""
+
+#: includes/Emails/ImportNotification.php:104 includes/functions.php:166
+msgid "Total Event(s): "
+msgstr ""
+
+#: includes/Emails/ImportNotification.php:105 includes/functions.php:167
+msgid "Inserted Event(s): "
+msgstr ""
+
+#: includes/Emails/ImportNotification.php:106 includes/functions.php:168
+msgid "Updated Event(s): "
+msgstr ""
+
+#: includes/Emails/ImportNotification.php:107 includes/functions.php:169
+msgid "Failed Event(s): "
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:61
+msgid "Add New"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:62
+msgid "Add New event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:63
+msgid "New event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:64
+msgid "Edit event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:65
+msgid "View event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:66
+msgid "All events"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:67
+msgid "Search events"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:68
+msgid "Parent events"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:69
+msgid "No events found."
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:70
+msgid "No events found in Trash."
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:105
+msgid "Search Tags"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:106
+msgid "Popular Tags"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:107
+msgid "All Tags"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:110
+msgid "Edit Tag"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:111
+msgid "Update Tag"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:112
+msgid "Add New Tag"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:113
+msgid "New Tag Name"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:114
+msgid "Separate tags with commas"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:115
+msgid "Add or remove tags"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:116
+msgid "Choose from the most used tags"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:117
+msgid "No tags found."
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:118
+msgid "Tags"
+msgstr ""
+
+#: includes/REST/V2/Events.php:86
+msgid "A unique numeric ID for the event."
+msgstr ""
+
+#: includes/REST/V2/Events.php:92
+msgid "Event title"
+msgstr ""
+
+#: includes/REST/V2/Events.php:98
+msgid "Description of event"
+msgstr ""
+
+#: includes/REST/V2/Events.php:104
+msgid "Organizer of event"
+msgstr ""
+
+#: includes/REST/V2/Events.php:110
+msgid "Email of event organizer"
+msgstr ""
+
+#: includes/REST/V2/Events.php:116
+msgid "Timestamp of event"
+msgstr ""
+
+#: includes/REST/V2/Events.php:122
+msgid "Address of event"
+msgstr ""
+
+#: includes/REST/V2/Events.php:128
+msgid "Latitude of event"
+msgstr ""
+
+#: includes/REST/V2/Events.php:134 includes/REST/V2/Events.php:140
+msgid "Longitude of event"
+msgstr ""
+
+#: includes/REST/V2/Events.php:146
+msgid "Tags of event"
+msgstr ""
+
+#: includes/Shortcodes/SimpleEvents.php:59
+msgid "Template does not exists."
+msgstr ""
+
+#: includes/functions.php:214
+msgid "less than a minute"
+msgstr ""
+
+#: includes/functions.php:219
+msgid "1 minute"
+msgstr ""
+
+#: includes/functions.php:230
+#. translators: %d: Minutes.
+msgid "%d minutes"
+msgstr ""
+
+#: includes/functions.php:241
+msgid "1 hour"
+msgstr ""
+
+#: includes/functions.php:255
+#. translators: %d: Hours.
+msgid "%d hours"
+msgstr ""
+
+#: includes/functions.php:268
+msgid "1 day"
+msgstr ""
+
+#: includes/functions.php:284
+#. translators: %d: Days.
+msgid "%d days"
+msgstr ""
+
+#: includes/functions.php:299
+msgid "1 month"
+msgstr ""
+
+#: includes/functions.php:312
+#. translators: %d: Months.
+msgid "%d months"
+msgstr ""
+
+#: includes/functions.php:318
+msgid "1 year"
+msgstr ""
+
+#: includes/functions.php:323
+#. translators: %d: Years.
+msgid "%d years"
+msgstr ""
+
+#: includes/functions.php:328
+#. translators: %s: Relative time such as "in 20 minutes" or "in 5 days".
+msgid "in %s"
+msgstr ""
+
+#: includes/functions.php:331
+#. translators: %s: Relative time such as "in 20 minutes" or "in 5 days".
+msgid "%s ago"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Simple Event List"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A Very simple event listing plugin for WordPress."
+msgstr ""
+
+#: templates/admin/help.php:17
+msgid "Import Data"
+msgstr ""
+
+#: templates/admin/help.php:22
+msgid "To import data, you can use this WordPress CLI command:"
+msgstr ""
+
+#: templates/admin/help.php:30
+msgid "Show Data"
+msgstr ""
+
+#: templates/admin/help.php:35
+msgid ""
+"To show data, You can use the following shortcode to display the event list "
+"on a page or post:"
+msgstr ""
+
+#: templates/admin/help.php:43
+msgid "Export Data"
+msgstr ""
+
+#: templates/admin/help.php:48
+msgid "To export data, you can browse this API endpoint:"
+msgstr ""
+
+#: templates/admin/help.php:56
+msgid "See the full REST URL:"
+msgstr ""
+
+#: templates/event-list.php:14
+msgid "No events found!"
+msgstr ""
+
+#: templates/single-event.php:25
+msgid "Time"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://exmaple.com"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Md. Mahedi Hasan"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.linkedin.com/in/mahedihasannoman/"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:57
+msgctxt "Post type general name"
+msgid "Events"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:58
+msgctxt "Post type singular name"
+msgid "Event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:59
+msgctxt "Admin Menu text"
+msgid "Simple Events"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:60
+msgctxt "Add New on Toolbar"
+msgid "Event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:71
+msgctxt "Overrides the “Featured Image” phrase for this post type. Added in 4.3"
+msgid "Event Cover Image"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:72
+msgctxt "Overrides the “Set featured image” phrase for this post type. Added in 4.3"
+msgid "Set cover image"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:73
+msgctxt ""
+"Overrides the “Remove featured image” phrase for this post type. Added in "
+"4.3"
+msgid "Remove cover image"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:74
+msgctxt ""
+"Overrides the “Use as featured image” phrase for this post type. Added in "
+"4.3"
+msgid "Use as cover image"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:75
+msgctxt ""
+"The post type archive label used in nav menus. Default “Post Archives”. "
+"Added in 4.4"
+msgid "Event archives"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:76
+msgctxt ""
+"Overrides the “Insert into post”/”Insert into page” phrase (used when "
+"inserting media into a post). Added in 4.4"
+msgid "Insert into event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:77
+msgctxt ""
+"Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
+"when viewing media attached to a post). Added in 4.4"
+msgid "Uploaded to this event"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:78
+msgctxt ""
+"Screen reader text for the filter links heading on the post type listing "
+"screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
+msgid "Filter events list"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:79
+msgctxt ""
+"Screen reader text for the pagination heading on the post type listing "
+"screen. Default “Posts list navigation”/”Pages list navigation”. Added in "
+"4.4"
+msgid "Events list navigation"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:80
+msgctxt ""
+"Screen reader text for the items list heading on the post type listing "
+"screen. Default “Posts list”/”Pages list”. Added in 4.4"
+msgid "Events list"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:103
+msgctxt "taxonomy general name"
+msgid "Event Tags"
+msgstr ""
+
+#: includes/PostTypes/SampleEvent.php:104
+msgctxt "taxonomy singular name"
+msgid "Tag"
+msgstr ""
