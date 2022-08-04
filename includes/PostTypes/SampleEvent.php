@@ -52,7 +52,6 @@ class SampleEvent extends RegisterPostType {
 	 * @return void
 	 */
 	public function register_event() {
-
 		$labels = array(
 			'name'                  => _x( 'Events', 'Post type general name', 'simple-event-list' ),
 			'singular_name'         => _x( 'Event', 'Post type singular name', 'simple-event-list' ),

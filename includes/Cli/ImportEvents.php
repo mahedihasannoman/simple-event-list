@@ -82,7 +82,6 @@ class ImportEvents {
 
 						// translators: %d: event inserted or updated or failed.
 						\WP_CLI::success( sprintf( esc_html__( '%1$d event(s) are inserted, %2$d event(s) are updated, and %3$d event(s) failed to insert or update!', 'simple-event-list' ), $inserted, $updated, $failed ) );
-
 					} else {
 						\WP_CLI::error( json_last_error_msg(), $exit = true );
 					}
@@ -95,6 +94,5 @@ class ImportEvents {
 		} else {
 			\WP_CLI::error( esc_html__( 'Source not found. Unable to import events', 'simple-event-list' ), $exit = true );
 		}
-
 	}
 }

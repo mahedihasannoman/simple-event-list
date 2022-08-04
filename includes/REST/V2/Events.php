@@ -39,7 +39,6 @@ class Events extends \WP_REST_Controller {
 	 * @return void
 	 */
 	public function register_routes() {
-
 		register_rest_route(
 			$this->namespace,
 			$this->rest_base,
@@ -244,7 +243,6 @@ class Events extends \WP_REST_Controller {
 	 * @api {GET} /wp-json/simple-event-list/v2/events/
 	 */
 	public function get_items( $request ) {
-
 		$data   = array();
 		$events = Event::get_all();
 

@@ -137,7 +137,6 @@ class Event {
 	 * @param int|bool $p_id Optional. The ID of a specific event item.
 	 */
 	public function __construct( $p_id = false ) {
-
 		if ( ! empty( $p_id ) ) {
 			$this->p_id = (int) $p_id;
 			$this->populate();
@@ -152,7 +151,6 @@ class Event {
 	 * @return void
 	 */
 	private function populate() {
-
 		$post = get_post( $this->p_id );
 
 		$this->id        = get_post_meta( $post->ID, '_simple_event_id', true );
@@ -175,7 +173,6 @@ class Event {
 	 * @return bool True on success.
 	 */
 	public function save() {
-
 		$event_args = array(
 			'post_title'   => sanitize_text_field( $this->title ),
 			'post_type'    => SampleEvent::post_type(),
@@ -223,7 +220,7 @@ class Event {
 		$cache_key = 'simple_event_db_result_' . $event_id;
 		$post_id   = wp_cache_get( $cache_key );
 		if ( false === $post_id ) {
-			$post_id = $wpdb->get_var( // phpcs:ignore WordPress.Sniffs.DB.DirectDatabaseQuery
+			$post_id = $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 				$wpdb->prepare(
 					"SELECT `post_id` FROM {$wpdb->postmeta} WHERE `meta_key` = '_simple_event_id' AND `meta_value` = %d",
 					(int) $event_id
@@ -264,7 +261,7 @@ class Event {
 			'post_type'      => SampleEvent::post_type(),
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
-			'meta_key'       => '_simple_event_time',
+			'meta_key'       => '_simple_event_time', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 			'orderby'        => 'meta_value',
 			'order'          => 'ASC',
 		);

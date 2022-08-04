@@ -57,33 +57,13 @@ class Assets {
 	 * @return void
 	 */
 	public function admin_scripts() {
-		if ( $this->is_admin_page() ) {
-			wp_register_style(
-				'simple-event-list-admin-css',
-				SIMPLE_EVENT_LIST_PLUGIN_URL . "assets/css/admin{$this->suffix}.css",
-				array(),
-				$this->version,
-				'all'
-			);
-			wp_enqueue_style( 'simple-event-list-admin-css' );
-		}
-
-	}
-
-	/**
-	 * Check if it is an admin pages of simple event list.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return boolean
-	 */
-	private function is_admin_page() {
-
-		$current_screen = get_current_screen();
-		if ( SampleEvent::post_type() === $current_screen->post_type ) {
-			return true;
-		}
-		return false;
+		wp_register_style(
+			'simple-event-list-admin-css',
+			SIMPLE_EVENT_LIST_PLUGIN_URL . "assets/css/admin{$this->suffix}.css",
+			array(),
+			$this->version,
+			'all'
+		);
 	}
 
 	/**

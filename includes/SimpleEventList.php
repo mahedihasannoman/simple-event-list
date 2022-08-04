@@ -135,7 +135,6 @@ final class SimpleEventList {
 	 * @return void
 	 */
 	public function includes() {
-
 		if ( $this->is_request( 'admin' ) ) {
 			new EventMetaboxes();
 			new HelpMenu();
@@ -158,9 +157,9 @@ final class SimpleEventList {
 
 		// Register custom post type.
 		new RegisterEvent();
+
 		// Register Assets.
 		new Assets();
-
 	}
 
 	/**

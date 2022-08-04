@@ -48,7 +48,7 @@ class HelpMenu {
 	 * @return void
 	 */
 	public function add_submenu() {
-		add_submenu_page(
+		$help = add_submenu_page(
 			$this->parent,
 			__( 'Help', 'simple-event-list' ),
 			__( 'Help', 'simple-event-list' ),
@@ -56,6 +56,19 @@ class HelpMenu {
 			'simple-event-help',
 			array( $this, 'render' )
 		);
+
+		add_action( $help, array( $this, 'enqueue_script' ) );
+	}
+
+	/**
+	 * Enqueue scripts/styles for help page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public function enqueue_script() {
+		wp_enqueue_style( 'simple-event-list-admin-css' );
 	}
 
 	/**

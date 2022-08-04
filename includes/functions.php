@@ -33,7 +33,6 @@ use SimpleEventList\Model\Event;
  * @return bool True on success.
  */
 function sel_insert_event( $event ) {
-
 	$defaults = array(
 		'id'        => '',
 		'title'     => '',
@@ -89,7 +88,6 @@ function sel_insert_event( $event ) {
  * @return bool True on success.
  */
 function sel_update_event( $id, $event ) {
-
 	$defaults = array(
 		'id'        => '',
 		'title'     => '',
@@ -142,37 +140,6 @@ function sel_recursive_sanitize_text_field( $array ) {
 }
 
 /**
- * Send email notification for import
- *
- * @param int $inserted Total inserted events.
- * @param int $updated  Total updated events.
- * @param int $failed   Total failed events.
- * @param int $total    Total events.
- *
- * @since 1.0.0
- * @return void
- */
-function sel_send_import_notification( $inserted, $updated, $failed, $total ) {
-
-	$to = 'logging@agentur-loop.com';
-
-	/* translators: Password change notification email subject. %s: Site title. */
-	$subject = sprintf( esc_html__( '[%s]: Events import has been finished!', 'simple-event-list' ), get_bloginfo( 'name' ) );
-	$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-
-	$message = sprintf(
-		'<div><p>%s</p><p>%s</p><p>%s</p><p>%s</p><p>%s</p></div>',
-		esc_html__( 'Events import has been finished successfully. Please see the detail report below.', 'simple-event-list' ),
-		esc_html__( 'Total Event(s): ', 'simple-event-list' ) . (int) $total,
-		esc_html__( 'Inserted Event(s): ', 'simple-event-list' ) . (int) $inserted,
-		esc_html__( 'Updated Event(s): ', 'simple-event-list' ) . (int) $updated,
-		esc_html__( 'Failed Event(s): ', 'simple-event-list' ) . (int) $failed,
-	);
-
-	wp_mail( $to, $subject, $message, $headers );
-}
-
-/**
  * Convert timestamp to relative time.
  *
  * @param string $timestamp Timestamp.
@@ -210,14 +177,10 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 
 	// less than 29secs.
 	if ( $time_difference <= 29 ) {
-
 		$time_remaining = __( 'less than a minute', 'simple-event-list' );
-
 	} elseif ( $time_difference > 29 && $time_difference <= 89 ) {
-
 		// more than 29secs and less than 1min29secss.
 		$time_remaining = __( '1 minute', 'simple-event-list' );
-
 	} elseif (
 		$time_difference > 89 &&
 		$time_difference <= (
@@ -330,5 +293,4 @@ function sel_relative_time_from_timestamp( $timestamp ) {
 		// translators: %s: Relative time such as "in 20 minutes" or "in 5 days".
 		return sprintf( __( '%s ago', 'simple-event-list' ), $time_remaining );
 	}
-
 }

@@ -38,7 +38,6 @@ class REST_APIs {
 	 * @return void
 	 */
 	public function rest_init() {
-
 		$api_version = strtoupper( $GLOBALS['simple_event_list']->rest_version );
 
 		$apis = array(
@@ -50,6 +49,5 @@ class REST_APIs {
 				new $api();
 			}
 		}
-
 	}
 }

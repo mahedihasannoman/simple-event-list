@@ -62,7 +62,6 @@ class EventMetaboxes {
 	 */
 	public function add_meta_boxes() {
 		add_meta_box( 'simple-event-metabox', __( 'Event Metadata', 'simple-event-list' ), array( $this, 'render_metabox' ), $this->post_type, 'side', 'high' );
-
 	}
 
 	/**
@@ -75,7 +74,6 @@ class EventMetaboxes {
 	 * @return void
 	 */
 	public function render_metabox( $post ) {
-
 		wp_nonce_field( $this->nonce_value, $this->nonce );
 		$organizer = get_post_meta( $post->ID, '_simple_event_organizer', true );
 		$email     = get_post_meta( $post->ID, '_simple_event_email', true );
@@ -83,7 +81,6 @@ class EventMetaboxes {
 		$address   = get_post_meta( $post->ID, '_simple_event_address', true );
 		$latitude  = get_post_meta( $post->ID, '_simple_event_latitude', true );
 		$longitude = get_post_meta( $post->ID, '_simple_event_longitude', true );
-
 		?>
 		<div class="sel_form_container">
 			<div class="sel_form_field">
@@ -112,7 +109,6 @@ class EventMetaboxes {
 			</div>
 		</div>
 		<?php
-
 	}
 
 	/**
@@ -123,7 +119,6 @@ class EventMetaboxes {
 	 * @return void
 	 */
 	public function save_post( $post_id ) {
-
 		if ( ! isset( $_POST[ $this->nonce ] ) ) {
 			return;
 		}
