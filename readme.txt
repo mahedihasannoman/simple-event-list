@@ -1,5 +1,5 @@
 === Simple Event List ===
-Contributors: mahedihasannoman
+Contributors: @mahedihasannoman
 Tags: events, events-listing
 Requires at least: 4.5
 Tested up to: 6.0.1
