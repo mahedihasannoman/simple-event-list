@@ -12,8 +12,6 @@
  * @package         SimpleEventList
  */
 
-// Your code starts here.
-
 use SimpleEventList\SimpleEventList;
 
 if ( ! defined( 'ABSPATH' ) ) {

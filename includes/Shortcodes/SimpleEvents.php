@@ -40,7 +40,7 @@ class SimpleEvents {
 	 * @return void
 	 */
 	public function setup_shortcode() {
-		add_shortcode( 'simple_events', array( $this, 'shortcode_callback' ) );
+		add_shortcode( 'simple-events', array( $this, 'shortcode_callback' ) );
 	}
 
 	/**

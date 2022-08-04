@@ -19,6 +19,21 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		/*
+         * CSS minify
+         * Compress and Minify CSS files
+         * Ref. https://github.com/gruntjs/grunt-contrib-cssmin
+         */
+        cssmin: {
+            minify: {
+                expand: true,
+                cwd: 'assets/css/',
+                src: [ '*.css', '!*.min.css'],
+                dest: 'assets/css/',
+                ext: '.min.css'
+            }
+        },
+
 		wp_readme_to_markdown: {
 			your_target: {
 				files: {
@@ -45,9 +60,10 @@ module.exports = function( grunt ) {
 		},
 	} );
 
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
-	grunt.registerTask( 'default', [ 'i18n','readme' ] );
+	grunt.registerTask( 'default', [ 'i18n', 'cssmin', 'readme' ] );
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
 
