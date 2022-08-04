@@ -8,7 +8,6 @@
 
 namespace SimpleEventList\Admin;
 
-use SimpleEventList\SimpleEventList;
 use SimpleEventList\PostTypes\SampleEvent;
 
 defined( 'ABSPATH' ) || exit;
