@@ -26,8 +26,8 @@ class Events extends \WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		$this->namespace = $GLOBALS['simple_event_list']->slug . '/v2';
-		$this->rest_base = '/events/';
+		$this->namespace = $GLOBALS['simple_event_list']->slug . '/' . $GLOBALS['simple_event_list']->rest_version;
+		$this->rest_base = '/events';
 		$this->register_routes();
 	}
 
@@ -153,6 +153,19 @@ class Events extends \WP_REST_Controller {
 			),
 		);
 		return $schema;
+	}
+
+	/**
+	 * Retrieves the query params for collections.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array Collection parameters.
+	 */
+	public function get_collection_params() {
+		return array(
+			'context' => $this->get_context_param( array( 'default' => 'view' ) ),
+		);
 	}
 
 	/**

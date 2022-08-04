@@ -205,9 +205,15 @@ final class SimpleEventList {
 		if ( empty( $_SERVER['REQUEST_URI'] ) ) {
 			return false;
 		}
+		$request_uri = $_SERVER['REQUEST_URI']; // phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		$rest_prefix         = trailingslashit( rest_get_url_prefix() );
-		$is_rest_api_request = ( false !== strpos( $_SERVER['REQUEST_URI'], $rest_prefix ) ); // phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$is_rest_api_request = ( false !== strpos( $request_uri, $rest_prefix ) );
+
+		// Check if plain permalink.
+		if ( ! $is_rest_api_request ) {
+			$is_rest_api_request = ( false !== strpos( $request_uri, 'rest_route' ) );
+		}
 
 		return apply_filters( 'simple_event_list_is_rest_api_request', $is_rest_api_request );
 	}

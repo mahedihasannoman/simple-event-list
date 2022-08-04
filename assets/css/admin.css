@@ -16,3 +16,11 @@
 .sel-menu-page-row p{
 	font-size: 14px;
 }
+.sel-menu-page-row span{
+	background: #424242;
+    display: inline-block;
+    color: #fff;
+    padding: 0px 10px;
+    border-radius: 5px;
+    line-height: 25px;
+}
