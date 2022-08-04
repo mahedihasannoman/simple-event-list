@@ -43,7 +43,8 @@ class Assets {
 	 * @return void
 	 */
 	public function __construct() {
-
+		$this->suffix  = $GLOBALS['simple_event_list']->minified_asset_suffix();
+		$this->version = $GLOBALS['simple_event_list']->version;
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 	}
@@ -59,7 +60,7 @@ class Assets {
 		if ( $this->is_admin_page() ) {
 			wp_register_style(
 				'simple-event-list-admin-css',
-				SIMPLE_EVENT_LIST_PLUGIN_URL . 'assets/css/admin.css',
+				SIMPLE_EVENT_LIST_PLUGIN_URL . "assets/css/admin{$this->suffix}.css",
 				array(),
 				$this->version,
 				'all'
@@ -95,7 +96,7 @@ class Assets {
 	public function frontend_scripts() {
 		wp_register_style(
 			'simple-event-list-frontend-css',
-			SIMPLE_EVENT_LIST_PLUGIN_URL . 'assets/css/frontend.css',
+			SIMPLE_EVENT_LIST_PLUGIN_URL . "assets/css/frontend{$this->suffix}.css",
 			array(),
 			$this->version,
 			'all'

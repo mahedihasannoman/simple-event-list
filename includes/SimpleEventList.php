@@ -65,7 +65,6 @@ final class SimpleEventList {
 	 */
 	public function __construct() {
 		$this->define_constants();
-		$this->includes();
 		$this->init_hooks();
 	}
 
@@ -135,7 +134,7 @@ final class SimpleEventList {
 			new SimpleEvents();
 		}
 
-		// Register Simple Event post type.
+		// Register custom post type.
 		new RegisterEvent();
 		// Register Assets.
 		new Assets();
@@ -154,6 +153,7 @@ final class SimpleEventList {
 	 * @return void
 	 */
 	public function on_plugins_loaded() {
+		$this->includes();
 		do_action( 'simple_event_list_loaded' );
 	}
 
