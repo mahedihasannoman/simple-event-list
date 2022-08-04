@@ -36,5 +36,5 @@ function simple_event_list() {
 	return SimpleEventList::instance();
 }
 
-// Global for backwards compatibility.
+// Fire.
 simple_event_list();

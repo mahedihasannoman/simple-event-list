@@ -23,7 +23,7 @@ class CustomPostTypes {
 
 	/**
 	 * Init custom post types
-	 * 
+	 *
 	 * @since 1.0.0
 	 *
 	 * @return void

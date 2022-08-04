@@ -2,7 +2,7 @@
 /**
  * Setup cli command for importing events.
  *
- * @package SimpleEventList
+ * @package SimpleEventList\CLI
  * @since 1.0.0
  */
 

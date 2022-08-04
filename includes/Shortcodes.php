@@ -23,7 +23,7 @@ class Shortcodes {
 
 	/**
 	 * Init shortcodes
-	 * 
+	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
@@ -40,16 +40,16 @@ class Shortcodes {
 
 	/**
 	 * Events shortcode
-	 * 
+	 *
 	 * @param array $atts Attributes.
-	 * 
+	 *
 	 * @since 1.0.0
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public static function events( $atts ) {
 		$atts = (array) $atts;
-		
+
 		$shortcode = new SimpleEvents( $atts );
 
 		return $shortcode->get_content();

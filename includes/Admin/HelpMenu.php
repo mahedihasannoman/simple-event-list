@@ -2,7 +2,7 @@
 /**
  * Setup admin menu class.
  *
- * @package SimpleEventList
+ * @package SimpleEventList\Admin
  * @since 1.0.0
  */
 

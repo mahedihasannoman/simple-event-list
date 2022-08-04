@@ -2,7 +2,7 @@
 /**
  * Setup shortcode for Simple Events List
  *
- * @package SimpleEventList
+ * @package SimpleEventList\Shortcodes
  * @since 1.0.0
  */
 
@@ -31,7 +31,7 @@ class SimpleEvents {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param array $attributes Shortcode attributes.
 	 *
 	 * @since 1.0.0
