@@ -8,10 +8,6 @@
 
 namespace SimpleEventList;
 
-use SimpleEventList\Admin\Admin;
-use SimpleEventList\CLI\ImportEvents;
-use SimpleEventList\REST\APIs;
-
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -133,30 +129,31 @@ final class SimpleEventList {
 	 * @return void
 	 */
 	public function includes() {
+		// Load admin classes.
 		if ( $this->is_request( 'admin' ) ) {
-			new Admin();
+			Admin::init();
 		}
 
-		// Register CLI.
+		// CLIs.
 		if ( $this->is_request( 'cli' ) ) {
-			\WP_CLI::add_command( 'simple-events', new ImportEvents() );
+			CLIRunner::init();
 		}
 
-		// Shortcodes.
+		// Load Shortcodes.
 		if ( $this->is_request( 'frontend' ) ) {
 			Shortcodes::init();
 		}
 
 		// Load REST routes.
 		if ( $this->is_request( 'rest' ) ) {
-			new APIs();
+			RestAPI::init();
 		}
 
 		// Register custom post types.
 		CustomPostTypes::init();
 
 		// Register Assets.
-		new Assets();
+		Assets::init();
 	}
 
 	/**

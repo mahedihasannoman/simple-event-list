@@ -1,33 +1,33 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Setup REST APIs for this plugin
+ * Load REST APIs for this plugin
  *
- * @package SimpleEventList\REST
+ * @package SimpleEventList
  * @since 1.0.0
  */
 
-namespace SimpleEventList\REST;
+namespace SimpleEventList;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Class for registering REST APIs.
+ * Load REST APIs.
  *
- * @class APIs
+ * @class RestAPI
  *
  * @since 1.0.0
  */
-class APIs {
+class RestAPI {
 
 	/**
-	 * APIs Constructor.
+	 * Initiate RestAPI
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
-	public function __construct() {
-		add_action( 'rest_api_init', array( $this, 'rest_init' ) );
+	public static function init() {
+		add_action( 'rest_api_init', array( static::class, 'load_routes' ) );
 	}
 
 	/**
@@ -37,11 +37,11 @@ class APIs {
 	 *
 	 * @return void
 	 */
-	public function rest_init() {
+	public static function load_routes() {
 		$api_version = strtoupper( simple_event_list()->rest_version );
 
 		$apis = array(
-			__NAMESPACE__ . "\\{$api_version}\\Events", // Register events REST rounts.
+			__NAMESPACE__ . "\\REST\\{$api_version}\\Events", // Register events REST rounts.
 		);
 
 		foreach ( $apis as $api ) {

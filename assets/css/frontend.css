@@ -18,7 +18,7 @@ ul.sel_event_list li.sel_single_event{
     margin-bottom: 20px;
     background: var(--event_background_color);
 }
-.sel_event_content p{
+.sel_event_list .sel_event_content p{
     margin: 5px 0px;
 }
 .sel_event_title{

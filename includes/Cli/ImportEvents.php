@@ -23,13 +23,24 @@ defined( 'ABSPATH' ) || exit;
 class ImportEvents {
 
 	/**
+	 * Register commands
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public static function register_commands() {
+		\WP_CLI::add_command( 'simple-events import', array( static::class, 'import' ) );
+	}
+
+	/**
 	 * Handle CLI command to import events from JSON file
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
-	public function import() {
+	public static function import() {
 		$source_path = SIMPLE_EVENT_LIST_ABSPATH . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'events.json';
 		$source_url  = SIMPLE_EVENT_LIST_PLUGIN_URL . 'data/events.json';
 		if ( file_exists( $source_path ) ) {

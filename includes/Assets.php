@@ -20,15 +20,15 @@ defined( 'ABSPATH' ) || exit;
 class Assets {
 
 	/**
-	 * Constructor
+	 * Initiate Assets
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
-	public function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+	public static function init() {
+		add_action( 'admin_enqueue_scripts', array( static::class, 'admin_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( static::class, 'frontend_scripts' ) );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function admin_scripts() {
+	public static function admin_scripts() {
 		wp_register_style(
 			'simple-event-list-admin-css',
 			SIMPLE_EVENT_LIST_PLUGIN_URL . 'assets/css/admin' . simple_event_list()->minified_asset_suffix() . '.css',
@@ -55,7 +55,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function frontend_scripts() {
+	public static function frontend_scripts() {
 		wp_register_style(
 			'simple-event-list-frontend-css',
 			SIMPLE_EVENT_LIST_PLUGIN_URL . 'assets/css/frontend' . simple_event_list()->minified_asset_suffix() . '.css',

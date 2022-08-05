@@ -2,11 +2,14 @@
 /**
  * Setup Admin class.
  *
- * @package SimpleEventList\Admin
+ * @package SimpleEventList
  * @since 1.0.0
  */
 
-namespace SimpleEventList\Admin;
+namespace SimpleEventList;
+
+use SimpleEventList\Admin\EventActions;
+use SimpleEventList\Admin\HelpMenu;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -20,13 +23,13 @@ defined( 'ABSPATH' ) || exit;
 class Admin {
 
 	/**
-	 * Admin Constructor
+	 * Initiate Admin
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
-	public function __construct() {
+	public static function init() {
 		// Setup plugin help menu.
 		new HelpMenu();
 
