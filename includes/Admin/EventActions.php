@@ -1,8 +1,8 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Setup metaboxes for Simple Events
+ * Setup Event Actions
  *
- * @package SimpleEventList
+ * @package SimpleEventList\Admin
  * @since 1.0.0
  */
 
@@ -13,13 +13,13 @@ use SimpleEventList\PostTypes\SimpleEvent;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * EventMetaboxes Class.
+ * EventActions Class.
  *
- * @class EventMetaboxes
+ * @class EventActions
  *
  * @since 1.0.0
  */
-class EventMetaboxes {
+class EventActions {
 
 	/**
 	 * Post type
@@ -49,8 +49,85 @@ class EventMetaboxes {
 	 */
 	public function __construct() {
 		$this->post_type = SimpleEvent::post_type();
+		// Add metaboxes for event.
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		// Save metabox data for event.
 		add_action( 'save_post', array( $this, 'save_post' ), 100 );
+
+		// Add metabox styles to event edit page.
+		add_action( 'admin_print_styles-post.php', array( $this, 'load_css' ), 10 );
+		add_action( 'admin_print_styles-post-new.php', array( $this, 'load_css' ), 10 );
+
+		// Add custom column in event table.
+		add_filter( "manage_edit-{$this->post_type}_columns", array( $this, 'add_columns' ), 10 );
+		add_action( "manage_{$this->post_type}_posts_custom_column", array( $this, 'column_content' ), 10, 2 );
+		add_filter( "manage_edit-{$this->post_type}_sortable_columns", array( $this, 'sortable_columns' ), 10 );
+
+		// Sort by event time.
+		add_action( 'pre_get_posts', array( $this, 'column_orderby' ) );
+	}
+
+	/**
+	 * Add columns
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $columns Event table columns.
+	 *
+	 * @return array
+	 */
+	public function add_columns( $columns ) {
+		$columns['timestamp'] = __( 'Event Time', 'simple-event-list' );
+		return $columns;
+	}
+
+	/**
+	 * Add column content
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $column_name Column name.
+	 * @param int    $post_id     Post ID.
+	 * @return null|string
+	 */
+	public function column_content( $column_name, $post_id ) {
+		if ( 'timestamp' !== $column_name ) {
+			return;
+		}
+		// Get timestamp from post meta.
+		$timestamp = get_post_meta( $post_id, '_simple_event_time', true );
+		echo esc_html( ucfirst( sel_relative_time_from_timestamp( $timestamp ) ) );
+	}
+
+	/**
+	 * Make columns sortable.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $columns Event table columns.
+	 *
+	 * @return array
+	 */
+	public function sortable_columns( $columns ) {
+		$columns['timestamp'] = 'event_time';
+		return $columns;
+	}
+
+	/**
+	 * Orderby custom column
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Query $query The WordPress Query class.
+	 * @return void
+	 */
+	public function column_orderby( $query ) {
+		$orderby = $query->get( 'orderby' );
+
+		if ( 'event_time' === $orderby ) {
+			$query->set( 'meta_key', '_simple_event_time' );
+			$query->set( 'orderby', 'meta_value' );
+		}
 	}
 
 	/**
@@ -62,6 +139,20 @@ class EventMetaboxes {
 	 */
 	public function add_meta_boxes() {
 		add_meta_box( 'simple-event-metabox', __( 'Event Metadata', 'simple-event-list' ), array( $this, 'render_metabox' ), $this->post_type, 'side', 'high' );
+	}
+
+	/**
+	 * Render style for Event post type
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public function load_css() {
+		$screen = get_current_screen();
+		if ( $this->post_type === $screen->post_type ) {
+			wp_enqueue_style( 'simple-event-list-admin-css' );
+		}
 	}
 
 	/**

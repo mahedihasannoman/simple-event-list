@@ -8,9 +8,8 @@
 
 namespace SimpleEventList;
 
+use SimpleEventList\Admin\Admin;
 use SimpleEventList\CLI\ImportEvents;
-use SimpleEventList\Admin\EventMetaboxes;
-use SimpleEventList\Admin\HelpMenu;
 use SimpleEventList\REST\APIs;
 
 defined( 'ABSPATH' ) || exit;
@@ -135,8 +134,7 @@ final class SimpleEventList {
 	 */
 	public function includes() {
 		if ( $this->is_request( 'admin' ) ) {
-			new EventMetaboxes();
-			new HelpMenu();
+			new Admin();
 		}
 
 		// Register CLI.
