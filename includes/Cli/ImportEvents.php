@@ -27,6 +27,8 @@ class ImportEvents {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @static
+	 *
 	 * @return void
 	 */
 	public static function register_commands() {
@@ -37,6 +39,8 @@ class ImportEvents {
 	 * Handle CLI command to import events from JSON file
 	 *
 	 * @since 1.0.0
+	 *
+	 * @static
 	 *
 	 * @return void
 	 */

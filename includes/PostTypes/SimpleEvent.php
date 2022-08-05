@@ -137,6 +137,8 @@ class SimpleEvent extends RegisterPostType {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @static
+	 *
 	 * @return string
 	 */
 	public static function post_type() {
@@ -147,6 +149,8 @@ class SimpleEvent extends RegisterPostType {
 	 * Get the taxonomy
 	 *
 	 * @since 1.0.0
+	 *
+	 * @static
 	 *
 	 * @return string
 	 */

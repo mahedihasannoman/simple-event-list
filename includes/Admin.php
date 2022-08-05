@@ -27,6 +27,8 @@ class Admin {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @static
+	 *
 	 * @return void
 	 */
 	public static function init() {

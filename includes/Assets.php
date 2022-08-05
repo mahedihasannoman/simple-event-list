@@ -24,6 +24,8 @@ class Assets {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @static
+	 *
 	 * @return void
 	 */
 	public static function init() {
@@ -35,6 +37,8 @@ class Assets {
 	 * Register admin styles/scripts
 	 *
 	 * @since 1.0.0
+	 *
+	 * @static
 	 *
 	 * @return void
 	 */
@@ -52,6 +56,8 @@ class Assets {
 	 * Register frontend styles/scripts
 	 *
 	 * @since 1.0.0
+	 *
+	 * @static
 	 *
 	 * @return void
 	 */

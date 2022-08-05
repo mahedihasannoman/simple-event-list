@@ -24,6 +24,8 @@ class RestAPI {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @static
+	 *
 	 * @return void
 	 */
 	public static function init() {
@@ -34,6 +36,8 @@ class RestAPI {
 	 * Load REST Routes
 	 *
 	 * @since 1.0.0
+	 *
+	 * @static
 	 *
 	 * @return void
 	 */

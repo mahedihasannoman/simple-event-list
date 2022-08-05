@@ -26,6 +26,8 @@ class Shortcodes {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @static
+	 *
 	 * @return void
 	 */
 	public static function init() {
@@ -44,6 +46,8 @@ class Shortcodes {
 	 * @param array $atts Attributes.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @static
 	 *
 	 * @return string
 	 */

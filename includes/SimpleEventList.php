@@ -1,6 +1,6 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * SimpleEventList setup
+ * Plugin main class setup
  *
  * @package SimpleEventList
  * @since 1.0.0
@@ -11,7 +11,7 @@ namespace SimpleEventList;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Main SimpleEventList Class.
+ * Plugin main class.
  *
  * @class SimpleEventList
  *
@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 final class SimpleEventList {
 
 	/**
-	 * SimpleEventList version.
+	 * Plugin version.
 	 *
 	 * @var string
 	 */
@@ -51,7 +51,7 @@ final class SimpleEventList {
 	protected static $instance = null;
 
 	/**
-	 * Main SimpleEventList Instance.
+	 * SimpleEventList Instance.
 	 *
 	 * Ensures only one instance of SimpleEventList is loaded or can be loaded.
 	 *

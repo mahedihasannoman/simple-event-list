@@ -210,7 +210,11 @@ class Event {
 	/**
 	 * Get event cpt id by the event id.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param int $event_id Event id.
+	 *
+	 * @static
 	 *
 	 * @return int|NULL $cpt_id Event cpt id.
 	 */
@@ -253,6 +257,8 @@ class Event {
 	 * Get All events
 	 *
 	 * @since 1.0.0
+	 *
+	 * @static
 	 *
 	 * @return array
 	 */
