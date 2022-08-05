@@ -20,7 +20,7 @@ Also, It does provide a REST API endpoint to export the data as a JSON format.
 
 Installation is super easy, just follow the steps below.
 
-1. Download the plugin `Releases` section of right side
+1. Download the plugin from `Releases` section of right side
 2. Go to `Dashboard > Plugins > Add New` page
 3. Upload `simple-event-list.zip`
 4. Activate the plugin
