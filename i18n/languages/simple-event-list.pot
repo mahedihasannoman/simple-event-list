@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple Event List 0.1.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-event-list\n"
-"POT-Creation-Date: 2022-08-04 21:26:13+00:00\n"
+"POT-Creation-Date: 2022-08-05 18:43:11+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,31 +25,35 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
-#: includes/Admin/EventMetaboxes.php:64
+#: includes/Admin/EventActions.php:80
+msgid "Event Time"
+msgstr ""
+
+#: includes/Admin/EventActions.php:141
 msgid "Event Metadata"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:87 templates/single-event.php:20
+#: includes/Admin/EventActions.php:178 templates/single-event.php:20
 msgid "Organizer"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:91 templates/single-event.php:21
+#: includes/Admin/EventActions.php:182 templates/single-event.php:21
 msgid "Email"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:95
+#: includes/Admin/EventActions.php:186
 msgid "Timestamp"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:99 templates/single-event.php:22
+#: includes/Admin/EventActions.php:190 templates/single-event.php:22
 msgid "Address"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:103 templates/single-event.php:23
+#: includes/Admin/EventActions.php:194 templates/single-event.php:23
 msgid "Latitude"
 msgstr ""
 
-#: includes/Admin/EventMetaboxes.php:107 templates/single-event.php:24
+#: includes/Admin/EventActions.php:198 templates/single-event.php:24
 msgid "Longitude"
 msgstr ""
 
@@ -57,34 +61,34 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:59
+#: includes/CLI/ImportEvents.php:70
 #. translators: %d: Event ID.
 msgid "Event ID: %d updated!"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:63
+#: includes/CLI/ImportEvents.php:74
 #. translators: %d: Event ID.
 msgid "Event ID: %d update failed."
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:71
+#: includes/CLI/ImportEvents.php:82
 #. translators: %d: Event ID.
 msgid "Event ID: %d inserted!"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:75
+#: includes/CLI/ImportEvents.php:86
 #. translators: %d: Event ID.
 msgid "Event ID: %d insert failed."
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:84
+#: includes/CLI/ImportEvents.php:95
 #. translators: %d: event inserted or updated or failed.
 msgid ""
 "%1$d event(s) are inserted, %2$d event(s) are updated, and %3$d event(s) "
 "failed to insert or update!"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:95
+#: includes/CLI/ImportEvents.php:106
 msgid "Source not found. Unable to import events"
 msgstr ""
 
@@ -247,11 +251,11 @@ msgstr ""
 msgid "Template does not exists."
 msgstr ""
 
-#: includes/SimpleEventList.php:267
+#: includes/SimpleEventList.php:262
 msgid "Cloning is forbidden."
 msgstr ""
 
-#: includes/SimpleEventList.php:276
+#: includes/SimpleEventList.php:271
 msgid "Unserializing instances of this class is forbidden."
 msgstr ""
 
