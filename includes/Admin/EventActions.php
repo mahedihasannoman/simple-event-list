@@ -13,7 +13,7 @@ use SimpleEventList\PostTypes\SimpleEvent;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * EventActions Class.
+ * Event actions handler Class.
  *
  * @class EventActions
  *
@@ -24,28 +24,36 @@ class EventActions {
 	/**
 	 * Post type
 	 *
+	 * @since 1.0.0
+	 *
 	 * @var string
 	 */
 	private $post_type;
 
 	/**
-	 * nonce_field for metaboxes
+	 * Nonce field for metaboxes
+	 *
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
 	private $nonce_field = 'simple_event_nonce';
 
 	/**
-	 * nonce_field value for metaboxes
+	 * Nonce Action for metaboxes
+	 *
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
-	private $nonce_action = 'simple_event_nonce_value';
+	private $nonce_action = 'simple_event_nonce_action';
 
 	/**
 	 * Constructor for SE_Setup_Metaboxes.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @return void
 	 */
 	public function __construct() {
 		$this->post_type = SimpleEvent::post_type();
@@ -94,6 +102,7 @@ class EventActions {
 		if ( 'timestamp' !== $column_name ) {
 			return;
 		}
+
 		// Get timestamp from post meta.
 		$timestamp = get_post_meta( $post_id, '_simple_event_time', true );
 		echo esc_html( ucfirst( sel_relative_time_from_timestamp( $timestamp ) ) );
@@ -150,6 +159,7 @@ class EventActions {
 	 */
 	public function load_css() {
 		$screen = get_current_screen();
+
 		if ( $this->post_type === $screen->post_type ) {
 			wp_enqueue_style( 'simple-event-list-admin-css' );
 		}
@@ -231,22 +241,27 @@ class EventActions {
 				$organizer = sanitize_text_field( wp_unslash( $_POST['_simple_event_organizer'] ) );
 				update_post_meta( $post_id, '_simple_event_organizer', $organizer );
 			}
+
 			if ( isset( $_POST['_simple_event_email'] ) ) {
 				$email = sanitize_email( wp_unslash( $_POST['_simple_event_email'] ) );
 				update_post_meta( $post_id, '_simple_event_email', $email );
 			}
+
 			if ( isset( $_POST['_simple_event_time'] ) ) {
 				$time = sanitize_text_field( wp_unslash( $_POST['_simple_event_time'] ) );
 				update_post_meta( $post_id, '_simple_event_time', $time );
 			}
+
 			if ( isset( $_POST['_simple_event_address'] ) ) {
 				$address = sanitize_text_field( wp_unslash( $_POST['_simple_event_address'] ) );
 				update_post_meta( $post_id, '_simple_event_address', $address );
 			}
+
 			if ( isset( $_POST['_simple_event_latitude'] ) ) {
 				$latitude = sanitize_text_field( wp_unslash( $_POST['_simple_event_latitude'] ) );
 				update_post_meta( $post_id, '_simple_event_latitude', $latitude );
 			}
+
 			if ( isset( $_POST['_simple_event_longitude'] ) ) {
 				$longitude = sanitize_text_field( wp_unslash( $_POST['_simple_event_longitude'] ) );
 				update_post_meta( $post_id, '_simple_event_longitude', $longitude );

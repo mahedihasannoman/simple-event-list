@@ -13,7 +13,7 @@ use SimpleEventList\Shortcodes\SimpleEvents;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Shortcodes Class.
+ * Shortcode handler Class.
  *
  * @class Shortcodes
  *

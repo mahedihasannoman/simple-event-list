@@ -14,7 +14,7 @@ use SimpleEventList\Admin\HelpMenu;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Admin Class.
+ * Load admin classes.
  *
  * @class Admin
  *

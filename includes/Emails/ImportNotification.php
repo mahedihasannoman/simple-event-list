@@ -11,7 +11,7 @@ namespace SimpleEventList\Emails;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * ImportNotification Class.
+ * Import email notification class.
  *
  * @class ImportNotification
  *
@@ -22,12 +22,16 @@ class ImportNotification extends BaseEmail {
 	/**
 	 * Total inserted events.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @var int
 	 */
 	private $inserted;
 
 	/**
 	 * Total updated events.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @var int
 	 */
@@ -36,12 +40,16 @@ class ImportNotification extends BaseEmail {
 	/**
 	 * Total failed events.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @var int
 	 */
 	private $failed;
 
 	/**
 	 * Total events.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @var int
 	 */

@@ -247,9 +247,11 @@ class Event {
 	 */
 	private function post_status( $timestamp ) {
 		$status = 'draft';
+
 		if ( strtotime( $timestamp ) > strtotime( current_time( 'mysql' ) ) ) {
 			$status = 'publish';
 		}
+
 		return $status;
 	}
 
@@ -263,7 +265,7 @@ class Event {
 	 * @return array
 	 */
 	public static function get_all() {
-		$args  = array(
+		$args = array(
 			'post_type'      => SimpleEvent::post_type(),
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
@@ -271,8 +273,8 @@ class Event {
 			'orderby'        => 'meta_value',
 			'order'          => 'ASC',
 		);
-		$query = new \WP_Query( $args );
 
+		$query  = new \WP_Query( $args );
 		$events = array();
 
 		if ( ! empty( $query->posts ) ) {

@@ -47,6 +47,7 @@ class ImportEvents {
 	public static function import() {
 		$source_path = SIMPLE_EVENT_LIST_ABSPATH . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'events.json';
 		$source_url  = SIMPLE_EVENT_LIST_PLUGIN_URL . 'data/events.json';
+
 		if ( file_exists( $source_path ) ) {
 			try {
 				$response = wp_remote_get( $source_url );
@@ -68,12 +69,15 @@ class ImportEvents {
 							if ( ! is_null( $post_id ) ) {
 								// Update the event.
 								$result = sel_update_event( $post_id, $event );
+
 								if ( $result ) {
 									$updated++;
+
 									// translators: %d: Event ID.
 									\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d updated!', 'simple-event-list' ), (int) $event['id'] ) );
 								} else {
 									$failed++;
+
 									// translators: %d: Event ID.
 									\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d update failed.', 'simple-event-list' ), (int) $event['id'] ) );
 								}
@@ -82,10 +86,12 @@ class ImportEvents {
 								$result = sel_insert_event( $event );
 								if ( $result ) {
 									$inserted++;
+
 									// translators: %d: Event ID.
 									\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d inserted!', 'simple-event-list' ), (int) $event['id'] ) );
 								} else {
 									$failed++;
+
 									// translators: %d: Event ID.
 									\WP_CLI::log( sprintf( esc_html__( 'Event ID: %d insert failed.', 'simple-event-list' ), (int) $event['id'] ) );
 								}

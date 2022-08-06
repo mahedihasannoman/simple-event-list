@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Simple Event List
- * Plugin URI:      https://exmaple.com
+ * Plugin URI:      https://github.com/mahedihasannoman/simple-event-list
  * Description:     A Very simple event listing plugin for WordPress.
  * Author:          Md. Mahedi Hasan
  * Author URI:      https://www.linkedin.com/in/mahedihasannoman/

@@ -11,7 +11,7 @@ namespace SimpleEventList\PostTypes;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * SimpleEvent Custom post type Class.
+ * Event Custom post type register class.
  *
  * @class SimpleEvent
  *
@@ -34,7 +34,7 @@ class SimpleEvent extends RegisterPostType {
 	protected const TAXONOMY = 'event-tag';
 
 	/**
-	 * SimpleEvents Constructor.
+	 * Constructor.
 	 *
 	 * @since 1.0.0
 	 *
@@ -45,7 +45,7 @@ class SimpleEvent extends RegisterPostType {
 	}
 
 	/**
-	 * Register Event
+	 * Register event CPT
 	 *
 	 * @since 1.0.0
 	 *

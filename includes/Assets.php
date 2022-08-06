@@ -11,7 +11,7 @@ namespace SimpleEventList;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Assets Class.
+ * Assets handler class.
  *
  * @class Assets
  *

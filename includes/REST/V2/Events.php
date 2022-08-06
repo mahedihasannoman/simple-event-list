@@ -14,7 +14,7 @@ use SimpleEventList\Model\Event;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Class Event Rest API
+ * Event Rest API class
  *
  * @since 1.0.0
  */

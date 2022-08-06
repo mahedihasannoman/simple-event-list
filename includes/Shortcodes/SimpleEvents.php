@@ -13,7 +13,7 @@ use SimpleEventList\Model\Event;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * SimpleEvents Shortcode Class.
+ * Event Shortcode Class.
  *
  * @class SimpleEvents
  *
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 class SimpleEvents {
 
 	/**
-	 * Attributes.
+	 * Shortcode Attributes.
 	 *
 	 * @since 1.0.0
 	 * @var   array
