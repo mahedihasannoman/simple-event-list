@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Simple Event List package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Simple Event List 0.1.0\n"
+"Project-Id-Version: Simple Event List 1.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-event-list\n"
-"POT-Creation-Date: 2022-08-05 18:47:51+00:00\n"
+"POT-Creation-Date: 2022-08-06 19:58:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Event Metadata"
 msgstr ""
 
-#: includes/Admin/EventActions.php:178 templates/single-event.php:20
+#: includes/Admin/EventActions.php:178 templates/single-event.php:21
 msgid "Organizer"
 msgstr ""
 
-#: includes/Admin/EventActions.php:182 templates/single-event.php:21
+#: includes/Admin/EventActions.php:182 templates/single-event.php:25
 msgid "Email"
 msgstr ""
 
@@ -45,15 +45,15 @@ msgstr ""
 msgid "Timestamp"
 msgstr ""
 
-#: includes/Admin/EventActions.php:190 templates/single-event.php:22
+#: includes/Admin/EventActions.php:190 templates/single-event.php:29
 msgid "Address"
 msgstr ""
 
-#: includes/Admin/EventActions.php:194 templates/single-event.php:23
+#: includes/Admin/EventActions.php:194 templates/single-event.php:33
 msgid "Latitude"
 msgstr ""
 
-#: includes/Admin/EventActions.php:198 templates/single-event.php:24
+#: includes/Admin/EventActions.php:198 templates/single-event.php:37
 msgid "Longitude"
 msgstr ""
 
@@ -61,34 +61,34 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:70
+#: includes/CLI/ImportEvents.php:74
 #. translators: %d: Event ID.
 msgid "Event ID: %d updated!"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:74
+#: includes/CLI/ImportEvents.php:78
 #. translators: %d: Event ID.
 msgid "Event ID: %d update failed."
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:82
+#: includes/CLI/ImportEvents.php:86
 #. translators: %d: Event ID.
 msgid "Event ID: %d inserted!"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:86
+#: includes/CLI/ImportEvents.php:90
 #. translators: %d: Event ID.
 msgid "Event ID: %d insert failed."
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:95
+#: includes/CLI/ImportEvents.php:99
 #. translators: %d: event inserted or updated or failed.
 msgid ""
 "%1$d event(s) are inserted, %2$d event(s) are updated, and %3$d event(s) "
 "failed to insert or update!"
 msgstr ""
 
-#: includes/CLI/ImportEvents.php:106
+#: includes/CLI/ImportEvents.php:110
 msgid "Source not found. Unable to import events"
 msgstr ""
 
@@ -360,8 +360,12 @@ msgstr ""
 msgid "No events found!"
 msgstr ""
 
-#: templates/single-event.php:25
+#: templates/single-event.php:41
 msgid "Time"
+msgstr ""
+
+#: templates/single-event.php:47
+msgid "Tags:"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

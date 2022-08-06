@@ -3,6 +3,7 @@ Thumbs.db
 wp-cli.local.yml
 node_modules/
 vendor/
+release/
 *.sql
 *.tar.gz
 *.zip

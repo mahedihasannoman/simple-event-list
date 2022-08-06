@@ -29,18 +29,18 @@ class EventActions {
 	private $post_type;
 
 	/**
-	 * Nonce for metaboxes
+	 * nonce_field for metaboxes
 	 *
 	 * @var string
 	 */
-	private $nonce = 'simple_event_nonce';
+	private $nonce_field = 'simple_event_nonce';
 
 	/**
-	 * Nonce value for metaboxes
+	 * nonce_field value for metaboxes
 	 *
 	 * @var string
 	 */
-	private $nonce_value = 'simple_event_nonce_value';
+	private $nonce_action = 'simple_event_nonce_value';
 
 	/**
 	 * Constructor for SE_Setup_Metaboxes.
@@ -165,7 +165,7 @@ class EventActions {
 	 * @return void
 	 */
 	public function render_metabox( $post ) {
-		wp_nonce_field( $this->nonce_value, $this->nonce );
+		wp_nonce_field( $this->nonce_action, $this->nonce_field );
 		$organizer = get_post_meta( $post->ID, '_simple_event_organizer', true );
 		$email     = get_post_meta( $post->ID, '_simple_event_email', true );
 		$time      = get_post_meta( $post->ID, '_simple_event_time', true );
@@ -173,30 +173,30 @@ class EventActions {
 		$latitude  = get_post_meta( $post->ID, '_simple_event_latitude', true );
 		$longitude = get_post_meta( $post->ID, '_simple_event_longitude', true );
 		?>
-		<div class="sel_form_container">
-			<div class="sel_form_field">
+		<div class="sel-form-container">
+			<div class="sel-form-field">
 				<label for="_simple_event_organizer"><?php echo esc_html__( 'Organizer', 'simple-event-list' ); ?></label>
-				<input type="text" name="_simple_event_organizer" value="<?php echo esc_attr( $organizer ); ?>" >
+				<input id="_simple_event_organizer" type="text" name="_simple_event_organizer" value="<?php echo esc_attr( $organizer ); ?>" >
 			</div>
-			<div class="sel_form_field">
+			<div class="sel-form-field">
 				<label for="_simple_event_email"><?php echo esc_html__( 'Email', 'simple-event-list' ); ?></label>
-				<input type="email" name="_simple_event_email" value="<?php echo esc_attr( $email ); ?>" >
+				<input id="_simple_event_email" type="email" name="_simple_event_email" value="<?php echo esc_attr( $email ); ?>" >
 			</div>
-			<div class="sel_form_field">
+			<div class="sel-form-field">
 				<label for="_simple_event_time"><?php echo esc_html__( 'Timestamp', 'simple-event-list' ); ?></label>
-				<input type="text" name="_simple_event_time" value="<?php echo esc_attr( $time ); ?>" >
+				<input id="_simple_event_time" type="text" name="_simple_event_time" value="<?php echo esc_attr( $time ); ?>" >
 			</div>
-			<div class="sel_form_field">
+			<div class="sel-form-field">
 				<label for="_simple_event_address"><?php echo esc_html__( 'Address', 'simple-event-list' ); ?></label>
-				<input type="text" name="_simple_event_address" value="<?php echo esc_attr( $address ); ?>" >
+				<input id="_simple_event_address" type="text" name="_simple_event_address" value="<?php echo esc_attr( $address ); ?>" >
 			</div>
-			<div class="sel_form_field">
+			<div class="sel-form-field">
 				<label for="_simple_event_latitude"><?php echo esc_html__( 'Latitude', 'simple-event-list' ); ?></label>
-				<input type="text" name="_simple_event_latitude" value="<?php echo esc_attr( $latitude ); ?>" >
+				<input id="_simple_event_latitude" type="text" name="_simple_event_latitude" value="<?php echo esc_attr( $latitude ); ?>" >
 			</div>
-			<div class="sel_form_field">
+			<div class="sel-form-field">
 				<label for="_simple_event_longitude"><?php echo esc_html__( 'Longitude', 'simple-event-list' ); ?></label>
-				<input type="text" name="_simple_event_longitude" value="<?php echo esc_attr( $longitude ); ?>" >
+				<input id="_simple_event_longitude" type="text" name="_simple_event_longitude" value="<?php echo esc_attr( $longitude ); ?>" >
 			</div>
 		</div>
 		<?php
@@ -210,11 +210,11 @@ class EventActions {
 	 * @return void
 	 */
 	public function save_post( $post_id ) {
-		if ( ! isset( $_POST[ $this->nonce ] ) ) {
+		if ( ! isset( $_POST[ $this->nonce_field ] ) ) {
 			return;
 		}
 
-		if ( ! wp_verify_nonce( $_POST[ $this->nonce ], $this->nonce_value ) ) { // phpcs:ignore WordPress.SuperGlobalInputUsage.AccessDetected,WordPress.Security
+		if ( ! wp_verify_nonce( $_POST[ $this->nonce_field ], $this->nonce_action ) ) { // phpcs:ignore WordPress.SuperGlobalInputUsage.AccessDetected,WordPress.Security
 			return;
 		}
 

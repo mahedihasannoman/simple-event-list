@@ -1,12 +1,12 @@
-.sel_form_field{
+.sel-form-field{
 	margin-bottom: 10px;
 }
-.sel_form_field label{
+.sel-form-field label{
 	display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
-.sel_form_field input{
+.sel-form-field input{
 	width: 100%;
 }
 .sel-menu-page-row{
