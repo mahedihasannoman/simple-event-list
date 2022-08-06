@@ -57,6 +57,7 @@ class HelpMenu {
 			array( $this, 'render' )
 		);
 
+		// Add styles and scripts.
 		add_action( $help, array( $this, 'enqueue_script' ) );
 	}
 
