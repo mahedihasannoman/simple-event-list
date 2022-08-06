@@ -55,7 +55,7 @@ class Events extends \WP_REST_Controller {
 	}
 
 	/**
-	 * Permission check.
+	 * Permission check. Public endpoint so true.
 	 *
 	 * @since 1.0.0
 	 *
@@ -240,7 +240,7 @@ class Events extends \WP_REST_Controller {
 	 * @param WP_REST_Request $request Full details about the request.
 	 *
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
-	 * @api {GET} /wp-json/simple-event-list/v2/events/
+	 * @api {GET} /wp-json/simple-event-list/v2/events
 	 */
 	public function get_items( $request ) {
 		$data   = array();

@@ -140,7 +140,7 @@ function sel_recursive_sanitize_text_field( $array ) {
 }
 
 /**
- * Convert timestamp to relative time.
+ * Convert timestamp to relative time. Example: In 3 days, In 2 months etc.
  *
  * @param string $timestamp Timestamp.
  *
