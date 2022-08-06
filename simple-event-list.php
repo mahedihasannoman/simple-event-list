@@ -6,8 +6,8 @@
  * Author:          Md. Mahedi Hasan
  * Author URI:      https://www.linkedin.com/in/mahedihasannoman/
  * Text Domain:     simple-event-list
- * Domain Path:     /languages
- * Version:         0.1.0
+ * Domain Path:     /i18n/languages
+ * Version:         1.0.0
  *
  * @package         SimpleEventList
  */
